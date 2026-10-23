@@ -117,19 +117,18 @@ body:before {
   align-items: center;
   gap: 6px;
   box-shadow: 0 3px 14px rgba(214, 173, 92, 0.4);
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, filter .25s ease;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
-  animation: btnFloatSubtle 3s ease-in-out infinite;
 }
 .btn-top-cta span {
   display: inline-block;
   transition: transform .25s ease;
 }
 .btn-top-cta:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 22px rgba(214, 173, 92, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(214, 173, 92, 0.75), 0 0 12px rgba(255, 225, 154, 0.4);
   color: #1d170b;
   text-decoration: none;
 }
@@ -234,7 +233,7 @@ body:before {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, filter .25s ease;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
 }
 .btn span[aria-hidden="true"] {
   display: inline-block;
@@ -249,12 +248,12 @@ body:before {
 .btn-wa {
   background: linear-gradient(180deg, #25d366, #1aa34e);
   color: #042513;
-  box-shadow: 0 7px 20px rgba(32, 199, 106, 0.35);
-  animation: waPulse 3.2s ease-in-out infinite;
+  box-shadow: 0 6px 18px rgba(32, 199, 106, 0.32);
+  animation: waGlow 4.2s ease-in-out infinite;
 }
 .btn-wa:hover {
-  transform: translateY(-3px) scale(1.015);
-  box-shadow: 0 12px 28px rgba(32, 199, 106, 0.55), 0 0 15px rgba(32, 199, 106, 0.3);
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: 0 12px 28px rgba(32, 199, 106, 0.65), 0 0 18px rgba(32, 199, 106, 0.35);
   color: #042513;
 }
 .fine {
@@ -438,13 +437,19 @@ h1 {
   box-shadow: 0 4px 16px rgba(214, 173, 92, 0.45);
   transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
   flex-shrink: 0;
-  animation: btnFloatSubtle 2.8s ease-in-out infinite;
+}
+.hero-offer-btn span {
+  display: inline-block;
+  transition: transform .25s ease;
 }
 .hero-offer-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(214, 173, 92, 0.7);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(214, 173, 92, 0.75), 0 0 14px rgba(255, 225, 154, 0.45);
   color: #1d170b;
   text-decoration: none;
+}
+.hero-offer-btn:hover span {
+  transform: translateX(4px);
 }
 .hero-offer-btn:active {
   transform: scale(0.97);
@@ -632,17 +637,16 @@ h1 {
   align-items: center;
   gap: 8px;
   margin: -6px 0 16px;
-  padding: 12px;
-  border: 1px solid #d6ad5c77;
+  padding: 13px;
+  border: 1.5px solid rgba(214, 173, 92, 0.55);
   border-radius: 12px;
   color: #ffe19a;
   text-decoration: none;
   font-size: 13px;
   font-weight: 850;
   background: #0c1930;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   transition: transform .25s cubic-bezier(.2,.8,.2,1), background .25s ease, box-shadow .25s ease, border-color .25s ease;
-  animation: midCtaGlow 4s ease-in-out infinite;
 }
 .mid-cta span {
   display: inline-block;
@@ -650,13 +654,16 @@ h1 {
 }
 .mid-cta:hover {
   background: #112242;
-  border-color: #ffd88a;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(214, 173, 92, 0.35);
+  border-color: #ffe19a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(214, 173, 92, 0.45), 0 0 14px rgba(214, 173, 92, 0.25);
   color: #fff;
 }
 .mid-cta:hover span {
   transform: translateX(4px);
+}
+.mid-cta:active {
+  transform: scale(0.98);
 }
 
 /* Sample Section & Nested High-Converting CTA Box */
@@ -839,10 +846,10 @@ h1 {
 .btn-buy {
   background: linear-gradient(180deg, #ffe39b, #d6a846);
   color: #1d170b;
-  box-shadow: 0 8px 22px rgba(214, 173, 92, 0.4);
+  box-shadow: 0 6px 20px rgba(214, 173, 92, 0.38);
   position: relative;
   overflow: hidden;
-  animation: btnFloatGlow 3.2s ease-in-out infinite;
+  animation: btnAuraGlow 4s ease-in-out infinite;
 }
 .btn-buy::after {
   content: "";
@@ -851,14 +858,14 @@ h1 {
   left: -120%;
   width: 70%;
   height: 200%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   transform: skewX(-25deg);
-  animation: btnShimmer 4s ease-in-out infinite;
+  animation: btnShimmerGentle 5.5s ease-in-out infinite;
   pointer-events: none;
 }
 .btn-buy:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 14px 32px rgba(214, 173, 92, 0.7), 0 0 20px rgba(255, 225, 154, 0.5);
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 14px 34px rgba(214, 173, 92, 0.75), 0 0 22px rgba(255, 225, 154, 0.55);
   color: #1d170b;
 }
 .btn-buy:active {
@@ -981,49 +988,27 @@ h1 {
   0%, 100% { transform: perspective(800px) rotateY(-5deg) translateY(0); }
   50% { transform: perspective(800px) rotateY(-3deg) translateY(-8px); }
 }
-@keyframes btnFloatGlow {
+@keyframes btnAuraGlow {
   0%, 100% {
-    transform: translateY(0);
-    box-shadow: 0 8px 22px rgba(214, 173, 92, 0.38);
+    box-shadow: 0 6px 20px rgba(214, 173, 92, 0.38);
   }
   50% {
-    transform: translateY(-3.5px);
-    box-shadow: 0 12px 28px rgba(214, 173, 92, 0.65), 0 0 16px rgba(255, 225, 154, 0.45);
+    box-shadow: 0 10px 30px rgba(214, 173, 92, 0.65), 0 0 18px rgba(255, 225, 154, 0.45);
   }
 }
-@keyframes btnFloatSubtle {
+@keyframes waGlow {
   0%, 100% {
-    transform: translateY(0);
+    box-shadow: 0 6px 18px rgba(32, 199, 106, 0.3);
   }
   50% {
-    transform: translateY(-2.5px);
+    box-shadow: 0 8px 26px rgba(32, 199, 106, 0.55), 0 0 14px rgba(32, 199, 106, 0.35);
   }
 }
-@keyframes waPulse {
-  0%, 100% {
-    transform: translateY(0);
-    box-shadow: 0 7px 20px rgba(32, 199, 106, 0.3);
-  }
-  50% {
-    transform: translateY(-3px);
-    box-shadow: 0 11px 26px rgba(32, 199, 106, 0.55), 0 0 15px rgba(32, 199, 106, 0.35);
-  }
-}
-@keyframes midCtaGlow {
-  0%, 100% {
-    border-color: #d6ad5c77;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-  50% {
-    border-color: #ffd88a;
-    box-shadow: 0 6px 20px rgba(214, 173, 92, 0.28);
-  }
-}
-@keyframes btnShimmer {
-  0%, 30% {
+@keyframes btnShimmerGentle {
+  0%, 25% {
     left: -120%;
   }
-  65%, 100% {
+  55%, 100% {
     left: 200%;
   }
 }
