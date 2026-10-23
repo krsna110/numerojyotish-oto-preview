@@ -8,15 +8,12 @@
 <meta name="description" content="Explore your personalized numerology blueprint from Mahaacharya.">
 <style>
 :root {
-  --navy: #071426;
   --deep: #040914;
-  --panel: #0c1930;
   --gold: #d6ad5c;
   --gold2: #ffe19a;
   --ivory: #f8f1e6;
   --ink: #17213a;
   --muted: #bdc8dc;
-  --green: #20c76a;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -122,18 +119,9 @@ body:before {
   position: relative;
   overflow: hidden;
 }
-.btn-top-cta span {
-  display: inline-block;
-  transition: transform .25s ease;
-}
 .btn-top-cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(214, 173, 92, 0.75), 0 0 12px rgba(255, 225, 154, 0.4);
-  color: #1d170b;
-  text-decoration: none;
-}
-.btn-top-cta:hover span {
-  transform: translateX(4px);
 }
 .btn-top-cta:active {
   transform: scale(0.97);
@@ -173,12 +161,6 @@ body:before {
   padding: 17px 16px;
   text-align: center;
   box-shadow: 0 14px 40px #0004;
-}
-.check {
-  width: 38px;
-  height: 38px;
-  vertical-align: middle;
-  margin-right: 7px;
 }
 .confirm h2 {
   font-size: 20px;
@@ -255,11 +237,6 @@ body:before {
   transform: translateY(-2px) scale(1.015);
   box-shadow: 0 12px 28px rgba(32, 199, 106, 0.65), 0 0 18px rgba(32, 199, 106, 0.35);
   color: #042513;
-}
-.fine {
-  font-size: 11px;
-  color: #9caac4;
-  margin: 9px 0 0;
 }
 .divider {
   display: flex;
@@ -438,18 +415,9 @@ h1 {
   transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
   flex-shrink: 0;
 }
-.hero-offer-btn span {
-  display: inline-block;
-  transition: transform .25s ease;
-}
 .hero-offer-btn:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 24px rgba(214, 173, 92, 0.75), 0 0 14px rgba(255, 225, 154, 0.45);
-  color: #1d170b;
-  text-decoration: none;
-}
-.hero-offer-btn:hover span {
-  transform: translateX(4px);
 }
 .hero-offer-btn:active {
   transform: scale(0.97);
@@ -659,11 +627,20 @@ h1 {
   box-shadow: 0 10px 26px rgba(214, 173, 92, 0.45), 0 0 14px rgba(214, 173, 92, 0.25);
   color: #fff;
 }
-.mid-cta:hover span {
-  transform: translateX(4px);
-}
 .mid-cta:active {
   transform: scale(0.98);
+}
+/* Shared icon transitions for action buttons */
+.btn-top-cta span,
+.hero-offer-btn span,
+.mid-cta span {
+  display: inline-block;
+  transition: transform .25s ease;
+}
+.btn-top-cta:hover span,
+.hero-offer-btn:hover span,
+.mid-cta:hover span {
+  transform: translateX(4px);
 }
 
 /* Sample Section & Nested High-Converting CTA Box */
@@ -721,9 +698,6 @@ h1 {
   background: #e8dfd1;
   border-radius: 8px;
   margin: 8px 0;
-}
-.lines.short {
-  width: 65%;
 }
 .sheet small {
   font-size: 9px;
@@ -834,11 +808,6 @@ h1 {
   font: 800 36px Georgia, serif;
   color: #8d531b;
 }
-.oldprice {
-  color: #777;
-  text-decoration: line-through;
-  font-size: 14px;
-}
 .offer-note {
   font-size: 10px;
   color: #5c6577;
@@ -866,10 +835,6 @@ h1 {
 .btn-buy:hover {
   transform: translateY(-3px) scale(1.015);
   box-shadow: 0 14px 34px rgba(214, 173, 92, 0.75), 0 0 22px rgba(255, 225, 154, 0.55);
-  color: #1d170b;
-}
-.btn-buy:active {
-  transform: scale(0.97);
 }
 .trust {
   display: flex;
@@ -930,20 +895,7 @@ h1 {
   }
 }
 
-/* Modal */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: #000b;
-  z-index: 200;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 22px;
-}
-.modal.show {
-  display: flex;
-}
+/* Fallback Order Modal (Native Dialog) */
 .modalbox {
   max-width: 380px;
   width: 100%;
@@ -953,6 +905,10 @@ h1 {
   padding: 24px;
   text-align: center;
   box-shadow: 0 20px 60px #0008;
+  color: #fff;
+}
+.modalbox::backdrop {
+  background: rgba(0, 0, 0, 0.75);
 }
 .modalbox h2 {
   font: 700 25px Georgia, serif;
@@ -965,14 +921,6 @@ h1 {
 }
 .modalbox button {
   margin-top: 10px;
-}
-.modal-close {
-  background: transparent;
-  border: 1px solid #54627a;
-  color: white;
-  border-radius: 10px;
-  padding: 11px 18px;
-  cursor: pointer;
 }
 
 /* Animations */
@@ -1279,17 +1227,15 @@ h1 {
 <!-- Bottom Sticky Bar for Mobile Screens -->
 <div class="sticky" aria-label="Quick offer action">
   <span class="sticky-price">Blueprint · ₹299</span>
-  <a class="btn btn-buy" href="#pricebox" id="stickyBuy" style="text-decoration:none">Offer dekhein <span aria-hidden="true">↑</span></a>
+  <a class="btn btn-buy" href="#pricebox" id="stickyBuy">Offer dekhein <span aria-hidden="true">↑</span></a>
 </div>
 
 <!-- Fallback Order Modal -->
-<div class="modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modalbox">
-    <h2 id="modalTitle">Order Your Numerology Blueprint</h2>
-    <p>The personalized report is ₹299, paid once. Please contact the person who shared this page to complete your order.</p>
-    <button class="btn btn-buy" id="closeModal" type="button">Understood</button>
-  </div>
-</div>
+<dialog class="modalbox" id="previewModal" aria-labelledby="modalTitle">
+  <h2 id="modalTitle">Order Your Numerology Blueprint</h2>
+  <p>The personalized report is ₹299, paid once. Please contact the person who shared this page to complete your order.</p>
+  <button class="btn btn-buy" id="closeModal" type="button">Understood</button>
+</dialog>
 
 <script>
 (function() {
@@ -1313,33 +1259,17 @@ h1 {
   const close = document.getElementById('closeModal');
   const pricebox = document.getElementById('pricebox');
 
-  function openModal() {
-    modal.classList.add('show');
-    close.focus();
-  }
-
   function pay() {
     if (/^https:\/\/(rzp\.io|razorpay\.com)\//i.test(RAZORPAY_PAYMENT_LINK)) {
       location.href = RAZORPAY_PAYMENT_LINK;
     } else {
-      openModal();
+      modal.showModal();
     }
   }
 
   buy.addEventListener('click', pay);
-
-  close.addEventListener('click', function() {
-    modal.classList.remove('show');
-    buy.focus();
-  });
-
-  modal.addEventListener('click', function(e) {
-    if (e.target === modal) modal.classList.remove('show');
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') modal.classList.remove('show');
-  });
+  close.addEventListener('click', () => modal.close());
+  modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
 
   // Highlight pricebox when scrolled to via in-page CTA links
   document.querySelectorAll('a[href="#pricebox"]').forEach(link => {

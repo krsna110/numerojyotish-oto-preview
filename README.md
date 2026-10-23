@@ -2,7 +2,8 @@
 
 ## Pages
 
-- `numerojyotish_oto_conversion.html` — webinar confirmation and ₹299 report offer.
+- `index.html` — webinar confirmation and ₹299 report offer (main entry point).
+- `numerojyotish_oto_conversion.html` — legacy redirect to `index.html`.
 - `sample-numerology-report.html` — fictional report sample (Life Path 3, Birth Number 7).
 - `payment-confirmation.html` — post-checkout landing page with two WhatsApp contact buttons.
 
@@ -15,4 +16,3 @@
 5. Replace fictional sample content with the exact deliverables and delivery terms you will provide. The sample is not a customer reading.
 
 Razorpay reference: [Payment Links API](https://razorpay.com/docs/api/payments/payment-links/).
-
