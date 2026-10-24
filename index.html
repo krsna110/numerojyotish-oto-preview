@@ -3,54 +3,102 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071426">
+<meta name="theme-color" content="#100B1C">
 <title>Personal Numerology Blueprint | Mahaacharya</title>
-<meta name="description" content="Explore your personalized numerology blueprint from Mahaacharya.">
+<meta name="description" content="Explore your personalized Vedic numerology blueprint from Mahaacharya. Special one-time webinar attendee add-on.">
 <style>
+/* ==========================================================================
+   Design System Tokens (Vedic Astrology Aesthetic)
+   Palette: Midnight Plum, Deep Purple, Warm Gold, Soft Ivory, Muted Lavender
+   ========================================================================== */
 :root {
-  --deep: #040914;
-  --gold: #d6ad5c;
-  --gold2: #ffe19a;
-  --ivory: #f8f1e6;
-  --ink: #17213a;
-  --muted: #bdc8dc;
+  --midnight-plum: #100B1C;
+  --midnight-deep: #090511;
+  --deep-purple: #24143B;
+  --purple-card: #1D1030;
+  --purple-card-border: rgba(214, 172, 85, 0.24);
+  --purple-card-hover: rgba(214, 172, 85, 0.45);
+  --purple-elevated: #281642;
+  
+  --warm-gold: #D6AC55;
+  --gold-light: #F7D88B;
+  --gold-deep: #B3862A;
+  --gold-gradient: linear-gradient(135deg, #FFE8A3 0%, #D6AC55 55%, #BA8929 100%);
+  --gold-glow: rgba(214, 172, 85, 0.4);
+  
+  --soft-ivory: #F7F1E7;
+  --ivory-dim: #E8E0D1;
+  --muted-lavender: #B9A8D1;
+  --lavender-dim: #84729C;
+  
+  --emerald: #20C76A;
+  --emerald-dark: #0A3319;
+  --emerald-glow: rgba(32, 199, 106, 0.35);
+  
+  --font-serif: Georgia, "Times New Roman", Garamond, serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+  
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(36, 20, 59, 0.6);
+  --shadow-gold: 0 6px 22px rgba(214, 172, 85, 0.35);
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
-  background: var(--deep);
-  color: #fff;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.5;
+  background-color: var(--midnight-plum);
+  color: var(--soft-ivory);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-body:before {
+body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(ellipse at 50% 5%, #17294b 0, transparent 40%),
-              radial-gradient(circle at 12% 35%, rgba(214, 173, 92, .08), transparent 22%),
-              linear-gradient(180deg, #071426, #030711);
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(36, 20, 59, 0.95) 0%, transparent 55%),
+    radial-gradient(circle at 10% 25%, rgba(214, 172, 85, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 90% 70%, rgba(185, 168, 209, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, #100B1C 0%, #090511 100%);
+  pointer-events: none;
 }
 
-/* Pinned Top Sticky Bar */
+/* ==========================================================================
+   Pinned Top Sticky Bar
+   ========================================================================== */
 .top-sticky-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(7, 20, 38, 0.94);
+  background: rgba(16, 11, 28, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(214, 173, 92, 0.35);
-  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--purple-card-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
 }
 .top-sticky-wrap {
-  max-width: 620px;
+  max-width: 640px;
   margin: auto;
-  padding: 10px 16px;
+  padding: 9px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,13 +111,15 @@ body:before {
   min-width: 0;
 }
 .top-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 99px;
-  background: rgba(214, 173, 92, 0.2);
-  border: 1px solid rgba(214, 173, 92, 0.45);
-  color: var(--gold2);
-  font-size: 8.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: rgba(214, 172, 85, 0.16);
+  border: 1px solid rgba(214, 172, 85, 0.45);
+  color: var(--gold-light);
+  font-size: 9px;
   font-weight: 850;
   letter-spacing: .08em;
   white-space: nowrap;
@@ -83,521 +133,302 @@ body:before {
 .top-title {
   font-size: 13px;
   font-weight: 700;
-  color: #fff;
+  color: var(--soft-ivory);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .top-price {
-  font-size: 13px;
-  font-weight: 850;
-  color: var(--gold2);
+  font-size: 13.5px;
+  font-weight: 900;
+  color: var(--gold-light);
   white-space: nowrap;
 }
 .top-old {
-  color: #8b97b0;
+  color: var(--lavender-dim);
   font-size: 11px;
   margin-left: 2px;
   text-decoration: line-through;
   font-weight: 400;
 }
-.btn-top-cta {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border-radius: 11px;
-  padding: 8px 14px;
-  font-size: 12.5px;
-  font-weight: 850;
-  text-decoration: none;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  flex-shrink: 0;
-  cursor: pointer;
-  transform-origin: center center;
-  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
-  animation: btnHarmonicRotate 5.2s ease-in-out infinite 1.2s, btnGoldAura 3.2s ease-in-out infinite;
+
+/* ==========================================================================
+   Page Layout & Container
+   ========================================================================== */
+.wrap {
+  max-width: 640px;
+  margin: auto;
+  padding: 70px 16px 110px;
 }
 
-/* Page Layout */
-.wrap {
-  max-width: 620px;
-  margin: auto;
-  padding: 68px 16px 112px;
-}
+/* ==========================================================================
+   Brand Header
+   ========================================================================== */
 .brand {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 0 18px;
+  gap: 12px;
+  padding: 16px 0 20px;
+  text-align: left;
 }
 .brand img {
-  width: 43px;
-  height: 43px;
+  width: 44px;
+  height: 44px;
+  filter: drop-shadow(0 2px 8px rgba(214, 172, 85, 0.3));
 }
 .brand-name {
-  font: 700 24px Georgia, serif;
-  color: var(--gold2);
+  font: 700 24px/1.1 var(--font-serif);
+  color: var(--gold-light);
+  letter-spacing: 0.02em;
 }
 .brand-sub {
   font-size: 11px;
-  color: #c7cfe0;
+  color: var(--muted-lavender);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
 }
 
-/* Confirmation Box */
+/* ==========================================================================
+   Confirmation Card (Webinar Seat Confirmed)
+   ========================================================================== */
 .confirm {
-  border: 1px solid rgba(32, 199, 106, .35);
-  background: linear-gradient(145deg, rgba(15, 35, 49, .97), rgba(5, 13, 27, .98));
-  border-radius: 18px;
-  padding: 17px 16px;
+  border: 1px solid var(--emerald-border);
+  background: linear-gradient(155deg, rgba(32, 199, 106, 0.12) 0%, rgba(29, 16, 48, 0.98) 45%, rgba(16, 11, 28, 0.98) 100%);
+  border-radius: var(--radius-lg);
+  padding: 22px 18px 20px;
   text-align: center;
-  box-shadow: 0 14px 40px #0004;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(32, 199, 106, 0.12);
+}
+.confirm-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(32, 199, 106, 0.18);
+  border: 1px solid rgba(32, 199, 106, 0.5);
+  color: var(--emerald);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
 }
 .confirm h2 {
-  font-size: 20px;
-  margin: 0 0 3px;
-  display: inline-block;
-  vertical-align: middle;
+  font: 700 22px/1.2 var(--font-serif);
+  color: #fff;
+  margin: 0 0 6px;
 }
 .confirm .sub {
   font-size: 13px;
-  color: #c3cce0;
-  margin: 8px 0 12px;
+  color: var(--muted-lavender);
+  margin: 0 0 16px;
+  line-height: 1.5;
 }
 .rows {
-  border: 1px solid #293852;
-  border-radius: 11px;
-  padding: 0 12px;
-  margin-bottom: 12px;
+  border: 1px solid rgba(185, 168, 209, 0.2);
+  background: rgba(16, 11, 28, 0.65);
+  border-radius: var(--radius-md);
+  padding: 0 14px;
+  margin-bottom: 16px;
   text-align: left;
 }
 .rowline {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 12px;
-  padding: 9px 0;
-  border-bottom: 1px solid #25324a;
-  font-size: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(185, 168, 209, 0.12);
+  font-size: 12.5px;
 }
 .rowline:last-child {
   border: 0;
 }
 .rowline span {
-  color: var(--muted);
+  color: var(--muted-lavender);
+  font-size: 12px;
 }
 .rowline strong {
   text-align: right;
+  color: var(--soft-ivory);
+  font-weight: 650;
 }
 
-/* Eye-Catchy Rotating Action Buttons System */
-.btn {
-  border: 0;
-  border-radius: 14px;
-  min-height: 54px;
-  padding: 13px 20px;
-  width: 100%;
+/* ==========================================================================
+   Sacred Vedic Divider
+   ========================================================================== */
+.divider {
   display: flex;
   align-items: center;
+  gap: 14px;
+  color: var(--warm-gold);
+  margin: 26px 0 20px;
+}
+.divider::before, .divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(214, 172, 85, 0.6), transparent);
+}
+.om {
+  border: 1px solid rgba(214, 172, 85, 0.6);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  background: rgba(36, 20, 59, 0.7);
+  box-shadow: 0 0 14px rgba(214, 172, 85, 0.3);
+  color: var(--gold-light);
+}
+
+/* ==========================================================================
+   Consistent, High-Converting Action Button System (Senior UI/UX)
+   ========================================================================== */
+.btn,
+.btn-top-cta,
+.hero-offer-btn,
+.mid-cta {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 850;
-  letter-spacing: 0.015em;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-md);
   cursor: pointer;
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   box-sizing: border-box;
-  transform-origin: center center;
-  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease, background .2s ease, border-color .2s ease;
   will-change: transform, box-shadow;
 }
 
-/* 360-Degree Continuous Rotating Border Beam */
-.btn-buy::before,
-.btn-wa::before,
-.btn-top-cta::before,
-.hero-offer-btn::before,
-.mid-cta::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  padding-bottom: 300%;
-  margin-top: -150%;
-  margin-left: -150%;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  animation: btnSpinBorderBeam 3.2s linear infinite;
-}
-
-@keyframes btnSpinBorderBeam {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Conic Border Beam Gradients per Button Theme */
-.btn-buy::before,
-.btn-top-cta::before,
-.hero-offer-btn::before {
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(255, 255, 255, 0.95) 25deg,
-    #ffe69a 50deg,
-    #e5a42a 85deg,
-    transparent 125deg,
-    transparent 180deg,
-    rgba(255, 255, 255, 0.95) 205deg,
-    #ffe69a 230deg,
-    #e5a42a 265deg,
-    transparent 305deg,
-    transparent 360deg
-  );
-}
-
-.btn-wa::before {
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(255, 255, 255, 0.95) 25deg,
-    #86efac 50deg,
-    #22c55e 85deg,
-    transparent 125deg,
-    transparent 180deg,
-    rgba(255, 255, 255, 0.95) 205deg,
-    #86efac 230deg,
-    #22c55e 265deg,
-    transparent 305deg,
-    transparent 360deg
-  );
-}
-
-.mid-cta::before {
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    #ffe19a 30deg,
-    #d6ad5c 75deg,
-    transparent 120deg,
-    transparent 180deg,
-    #ffe19a 210deg,
-    #d6ad5c 255deg,
-    transparent 300deg,
-    transparent 360deg
-  );
-}
-
-/* Inner Background Surface (inset 2px reveals the rotating border beam) */
-.btn-buy::after,
-.btn-wa::after,
-.btn-top-cta::after,
-.hero-offer-btn::after,
-.mid-cta::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border-radius: inherit;
-  z-index: 1;
-  pointer-events: none;
-  transition: opacity .25s ease, filter .25s ease;
-}
-
-.btn-buy::after,
-.btn-top-cta::after,
-.hero-offer-btn::after {
-  background: 
-    linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.45) 45%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.45) 55%, transparent 80%),
-    linear-gradient(180deg, #fff2be 0%, #ffd269 22%, #e5a42a 72%, #cb8918 100%);
-  background-size: 250% 100%, 100% 100%;
-  background-position: -150% 0, 0 0;
-  animation: btnShimmerSweep 4.2s ease-in-out infinite;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85),
-              inset 0 -2px 4px rgba(135, 78, 2, 0.35);
-}
-
-.btn-wa::after {
-  background: 
-    linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.4) 45%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0.4) 55%, transparent 80%),
-    linear-gradient(180deg, #3cf582 0%, #20c76a 26%, #159b4e 74%, #0d7539 100%);
-  background-size: 250% 100%, 100% 100%;
-  background-position: -150% 0, 0 0;
-  animation: btnShimmerSweep 4.2s ease-in-out infinite;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8),
-              inset 0 -2px 4px rgba(4, 38, 19, 0.4);
-}
-
-.mid-cta::after {
-  background: 
-    linear-gradient(110deg, transparent 20%, rgba(255, 225, 154, 0.2) 45%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 225, 154, 0.2) 55%, transparent 80%),
-    linear-gradient(180deg, #142749 0%, #0c1830 50%, #071224 100%);
-  background-size: 250% 100%, 100% 100%;
-  background-position: -150% 0, 0 0;
-  animation: btnShimmerSweep 4.5s ease-in-out infinite;
-  box-shadow: inset 0 1px 1px rgba(255, 225, 154, 0.4),
-              inset 0 -2px 4px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes btnShimmerSweep {
-  0%, 25% {
-    background-position: -150% 0, 0 0;
-  }
-  65%, 100% {
-    background-position: 250% 0, 0 0;
-  }
-}
-
-/* Foreground Content Layer */
-.btn > *,
-.btn-top-cta > *,
-.hero-offer-btn > *,
-.mid-cta > * {
-  position: relative;
-  z-index: 2;
-}
-
+/* Primary CTAs (Warm Gold Liquid Sheen) */
 .btn-buy,
-.btn-top-cta,
-.hero-offer-btn {
-  color: #171003;
+.btn-top-cta {
+  background: var(--gold-gradient);
+  color: #120B02;
+  border: 1px solid rgba(255, 235, 175, 0.7);
+  box-shadow: 0 4px 18px rgba(214, 172, 85, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
+.btn-buy:hover,
+.btn-top-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(214, 172, 85, 0.6), 0 0 14px rgba(247, 216, 139, 0.35);
+}
+.btn-buy:active,
+.btn-top-cta:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(214, 172, 85, 0.3);
+}
 
+/* Special Action (WhatsApp Community CTA) */
 .btn-wa {
-  color: #03200f;
+  background: linear-gradient(135deg, #2ED573 0%, #20C76A 50%, #159B4E 100%);
+  color: #042513;
+  border: 1px solid rgba(134, 239, 172, 0.6);
+  box-shadow: 0 4px 18px rgba(32, 199, 106, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
-
-.mid-cta {
-  color: #ffe19a;
-  text-shadow: 0 0 12px rgba(255, 225, 154, 0.5);
+.btn-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(32, 199, 106, 0.6), 0 0 16px rgba(74, 222, 128, 0.35);
+}
+.btn-wa:active {
+  transform: translateY(1px);
 }
 
-/* Continuous 360-Degree Rotating Sparkle/Chakra Icon */
+/* Secondary Action CTAs (Deep Purple with Warm Gold Rim) */
+.hero-offer-btn,
+.mid-cta {
+  background: rgba(36, 20, 59, 0.85);
+  color: var(--gold-light);
+  border: 1.5px solid var(--warm-gold);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(214, 172, 85, 0.15);
+  backdrop-filter: blur(8px);
+}
+.hero-offer-btn:hover,
+.mid-cta:hover {
+  background: rgba(45, 25, 75, 0.98);
+  border-color: #FFE6A8;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 172, 85, 0.4), 0 0 16px rgba(214, 172, 85, 0.2);
+}
+.hero-offer-btn:active,
+.mid-cta:active {
+  transform: translateY(1px);
+}
+
+/* Specific Button Sizing */
+.btn {
+  min-height: 52px;
+  padding: 13px 22px;
+  width: 100%;
+}
+.btn-top-cta {
+  min-height: auto;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  border-radius: var(--radius-sm);
+  width: auto;
+  flex-shrink: 0;
+}
+.hero-offer-btn {
+  min-height: auto;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  border-radius: var(--radius-sm);
+  width: auto;
+  flex-shrink: 0;
+}
+.mid-cta {
+  min-height: 48px;
+  padding: 13px 22px;
+  font-size: 13.5px;
+  width: auto;
+  margin: -6px 0 16px;
+}
+
+/* Sparkle icon and arrow micro-interactions */
 .btn-rot-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
-  transform-origin: center center;
-  animation: btnSpinIcon 3.6s linear infinite;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.85));
-  flex-shrink: 0;
+  color: inherit;
+  transition: transform .25s ease;
 }
-.btn-top-cta .btn-rot-icon,
-.hero-offer-btn .btn-rot-icon {
-  font-size: 13px;
-}
-@keyframes btnSpinIcon {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Harmonic Rotating Sway for Constant Eye-Catchy Attention */
-@keyframes btnHarmonicRotate {
-  0%, 100% {
-    transform: rotate(0deg) scale(1);
-  }
-  20% {
-    transform: rotate(-1.5deg) scale(1.015);
-  }
-  40% {
-    transform: rotate(1.5deg) scale(1.015);
-  }
-  60% {
-    transform: rotate(-0.8deg) scale(1.008);
-  }
-  80% {
-    transform: rotate(0.8deg) scale(1.008);
-  }
-}
-
-/* Pulsing Glowing Auras */
-@keyframes btnGoldAura {
-  0%, 100% {
-    box-shadow: 0 4px 18px rgba(214, 173, 92, 0.42),
-                0 0 22px rgba(255, 214, 102, 0.28),
-                0 10px 24px rgba(0, 0, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 8px 30px rgba(214, 173, 92, 0.75),
-                0 0 38px rgba(255, 225, 154, 0.65),
-                0 0 12px rgba(255, 255, 255, 0.5),
-                0 12px 28px rgba(0, 0, 0, 0.5);
-  }
-}
-
-@keyframes btnEmeraldAura {
-  0%, 100% {
-    box-shadow: 0 4px 18px rgba(32, 199, 106, 0.42),
-                0 0 22px rgba(52, 224, 115, 0.3),
-                0 10px 24px rgba(0, 0, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 8px 30px rgba(32, 199, 106, 0.75),
-                0 0 40px rgba(74, 222, 128, 0.65),
-                0 0 14px rgba(255, 255, 255, 0.5),
-                0 12px 28px rgba(0, 0, 0, 0.5);
-  }
-}
-
-@keyframes btnMidCtaAura {
-  0%, 100% {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45),
-                0 0 16px rgba(214, 173, 92, 0.25);
-  }
-  50% {
-    box-shadow: 0 8px 26px rgba(214, 173, 92, 0.55),
-                0 0 30px rgba(255, 225, 154, 0.45),
-                0 0 10px rgba(214, 173, 92, 0.4);
-  }
-}
-
-/* Idle Rotating Sway and Aura Assignments */
-.btn-buy {
-  animation: btnHarmonicRotate 5s ease-in-out infinite, btnGoldAura 3.2s ease-in-out infinite;
-}
-.btn-wa {
-  animation: btnHarmonicRotate 5s ease-in-out infinite 0.6s, btnEmeraldAura 3.2s ease-in-out infinite;
-}
-
-/* Interactive Hover & Active 3D Rotate Reactions */
-.btn:hover,
-.btn-top-cta:hover,
-.hero-offer-btn:hover,
-.mid-cta:hover {
-  transform: translateY(-3px) rotate(-1.5deg) scale(1.03);
-  animation-play-state: paused;
-}
-
-.btn-buy:hover,
-.btn-top-cta:hover,
-.hero-offer-btn:hover {
-  box-shadow: 0 12px 34px rgba(214, 173, 92, 0.85),
-              0 0 45px rgba(255, 225, 154, 0.75),
-              0 0 16px rgba(255, 255, 255, 0.7),
-              0 14px 32px rgba(0, 0, 0, 0.55);
-}
-
-.btn-wa:hover {
-  box-shadow: 0 12px 34px rgba(32, 199, 106, 0.85),
-              0 0 45px rgba(74, 222, 128, 0.75),
-              0 0 16px rgba(255, 255, 255, 0.7),
-              0 14px 32px rgba(0, 0, 0, 0.55);
-}
-
-.mid-cta:hover {
-  box-shadow: 0 12px 32px rgba(214, 173, 92, 0.65),
-              0 0 35px rgba(255, 225, 154, 0.55),
-              0 12px 28px rgba(0, 0, 0, 0.5);
-  color: #fff;
-}
-
-.btn:active,
-.btn-top-cta:active,
-.hero-offer-btn:active,
-.mid-cta:active {
-  transform: translateY(1px) rotate(1.2deg) scale(0.97);
-  transition-duration: .1s;
-}
-
 .btn:hover .btn-rot-icon,
 .btn-top-cta:hover .btn-rot-icon,
 .hero-offer-btn:hover .btn-rot-icon,
 .mid-cta:hover .btn-rot-icon {
-  animation-duration: 1.1s;
-  filter: drop-shadow(0 0 10px #ffffff);
+  transform: rotate(90deg) scale(1.15);
 }
 
 .btn-arrow {
   display: inline-block;
+  font-weight: 850;
   transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
 }
 .btn:hover .btn-arrow,
 .btn-top-cta:hover .btn-arrow,
 .hero-offer-btn:hover .btn-arrow,
 .mid-cta:hover .btn-arrow {
-  transform: translateX(5px) scale(1.15);
-}
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--gold);
-  margin: 23px 0 18px;
-}
-.divider:before, .divider:after {
-  content: "";
-  height: 1px;
-  flex: 1;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.om {
-  border: 1px solid var(--gold);
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 17px;
-  background: rgba(214, 173, 92, 0.1);
-  box-shadow: 0 0 12px rgba(214, 173, 92, 0.25);
-  animation: omPulse 3.5s ease-in-out infinite;
+  transform: translateX(4px);
 }
 
-/* OTO Offer Section */
-.pill {
-  display: table;
-  margin: 0 auto 13px;
-  padding: 7px 13px;
-  border-radius: 99px;
-  background: linear-gradient(90deg, var(--gold2), var(--gold));
-  color: #1d170b;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: .06em;
-  text-align: center;
-}
-h1 {
-  font: 700 clamp(34px, 9vw, 46px)/1.03 Georgia, "Times New Roman", serif;
-  letter-spacing: -.7px;
-  text-align: center;
-  margin: 0 0 12px;
-}
-.gold {
-  color: var(--gold2);
-}
-.lead {
-  text-align: center;
-  color: #d2d9e8;
-  font-size: 15px;
-  line-height: 1.6;
-  margin: 0 auto 14px;
-  max-width: 480px;
-}
-.lead strong {
-  color: #fff;
-}
-.session-note {
-  text-align: center;
-  color: #f6d993;
-  font-size: 12px;
-  margin: 0 auto 5px;
-}
-
-/* Hero Section Banner - Highlighted */
+/* ==========================================================================
+   Hero OTO Section & Banner
+   ========================================================================== */
 .hero-offer-banner {
   position: relative;
   overflow: hidden;
@@ -605,39 +436,12 @@ h1 {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  margin: 0 0 20px;
+  margin: 0 0 22px;
   padding: 13px 16px;
-  border: 1.5px solid #e5b357;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(214, 173, 92, 0.22) 0%, rgba(14, 30, 56, 0.98) 40%, rgba(8, 18, 36, 0.98) 80%, rgba(214, 173, 92, 0.16) 100%);
-  box-shadow: 0 0 24px rgba(214, 173, 92, 0.28), 0 8px 30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 225, 154, 0.35);
-  animation: bannerGlow 4s ease-in-out infinite alternate;
-}
-@keyframes bannerGlow {
-  0% {
-    box-shadow: 0 0 18px rgba(214, 173, 92, 0.22), 0 8px 24px rgba(0, 0, 0, 0.5);
-    border-color: rgba(229, 179, 87, 0.85);
-  }
-  100% {
-    box-shadow: 0 0 28px rgba(214, 173, 92, 0.42), 0 10px 32px rgba(0, 0, 0, 0.65);
-    border-color: #ffd88a;
-  }
-}
-.hero-offer-banner::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 225, 154, 0.15), transparent);
-  transform: skewX(-25deg);
-  animation: bannerShimmer 4.5s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes bannerShimmer {
-  0%, 35% { left: -120%; }
-  65%, 100% { left: 180%; }
+  border: 1.5px solid var(--purple-card-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(36, 20, 59, 0.95) 0%, rgba(29, 16, 48, 0.98) 50%, rgba(16, 11, 28, 0.98) 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(214, 172, 85, 0.3);
 }
 .hero-offer-banner .banner-info {
   display: flex;
@@ -652,192 +456,232 @@ h1 {
   gap: 5px;
   width: fit-content;
   padding: 3px 9px;
-  border-radius: 99px;
-  background: linear-gradient(90deg, #ffe19a, #d6ad5c);
-  color: #171003;
+  border-radius: var(--radius-pill);
+  background: rgba(214, 172, 85, 0.18);
+  border: 1px solid rgba(214, 172, 85, 0.4);
+  color: var(--gold-light);
   font-size: 9px;
-  font-weight: 900;
+  font-weight: 850;
   letter-spacing: .08em;
-  box-shadow: 0 2px 8px rgba(214, 173, 92, 0.35);
 }
 .hero-offer-banner strong {
   font-size: 14.5px;
   font-weight: 800;
-  color: #fff;
+  color: var(--soft-ivory);
   display: flex;
   align-items: baseline;
   gap: 6px;
   flex-wrap: wrap;
 }
 .banner-price {
-  color: var(--gold2);
+  color: var(--gold-light);
   font-weight: 900;
-  font-size: 15px;
-  text-shadow: 0 0 10px rgba(214, 173, 92, 0.4);
+  font-size: 15.5px;
+  text-shadow: 0 0 10px rgba(214, 172, 85, 0.4);
 }
 .banner-old {
-  color: #8b99b3;
+  color: var(--lavender-dim);
   font-size: 11.5px;
   text-decoration: line-through;
   font-weight: 400;
 }
 .banner-save {
   background: rgba(32, 199, 106, 0.2);
-  color: #20c76a;
-  border: 1px solid rgba(32, 199, 106, 0.4);
-  font-size: 8.5px;
+  color: var(--emerald);
+  border: 1px solid rgba(32, 199, 106, 0.45);
+  font-size: 9px;
   font-weight: 900;
-  padding: 1px 6px;
+  padding: 2px 7px;
   border-radius: 6px;
   letter-spacing: .04em;
 }
-.hero-offer-btn {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  font-size: 13px;
+
+.pill {
+  display: table;
+  margin: 0 auto 14px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(214, 172, 85, 0.14);
+  border: 1px solid rgba(214, 172, 85, 0.35);
+  color: var(--gold-light);
+  font-size: 10px;
   font-weight: 850;
-  white-space: nowrap;
-  text-decoration: none;
-  padding: 9px 15px;
-  border-radius: 11px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  flex-shrink: 0;
-  cursor: pointer;
-  transform-origin: center center;
-  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
-  animation: btnHarmonicRotate 5.2s ease-in-out infinite 1.8s, btnGoldAura 3.2s ease-in-out infinite;
+  letter-spacing: .08em;
+  text-align: center;
+}
+h1 {
+  font: 700 clamp(32px, 8.5vw, 44px)/1.08 var(--font-serif);
+  letter-spacing: -.5px;
+  text-align: center;
+  margin: 0 0 14px;
+  color: var(--soft-ivory);
+}
+.gold-text {
+  color: var(--gold-light);
+  background: linear-gradient(135deg, #FFF3D1 0%, #D6AC55 60%, #BA8929 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.lead {
+  text-align: center;
+  color: var(--muted-lavender);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 auto 14px;
+  max-width: 500px;
+}
+.lead strong {
+  color: var(--soft-ivory);
+}
+.session-note {
+  text-align: center;
+  color: var(--gold-light);
+  font-size: 12px;
+  margin: 0 auto 6px;
+  opacity: 0.95;
 }
 
-/* Hero CTA */
+/* Hero CTA Block */
 .hero-cta {
   display: grid;
-  gap: 8px;
-  max-width: 360px;
-  margin: 15px auto 6px;
-}
-.hero-cta .btn {
-  min-height: 48px;
+  gap: 10px;
+  max-width: 380px;
+  margin: 18px auto 8px;
 }
 .sample-link {
   text-align: center;
-  color: #d7dff0;
-  font-size: 12px;
-  font-weight: 750;
-  padding: 5px;
+  color: var(--muted-lavender);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 6px;
   text-decoration: underline;
   text-underline-offset: 3px;
+  transition: color .2s ease;
 }
 .sample-link:hover {
-  color: #fff;
+  color: var(--soft-ivory);
 }
 
-/* 3D Book Cover Scene */
+/* ==========================================================================
+   3D Book Cover Scene (Clean Ambient Backlight)
+   ========================================================================== */
 .book-scene {
   position: relative;
-  min-height: 245px;
+  min-height: 255px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 4px 0 12px;
-  overflow: hidden;
+  margin: 8px 0 18px;
+  overflow: visible;
 }
-
+.book-scene::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214, 172, 85, 0.18) 0%, rgba(36, 20, 59, 0.35) 50%, transparent 75%);
+  filter: blur(20px);
+  pointer-events: none;
+}
 .book {
   position: relative;
   z-index: 1;
-  width: 178px;
-  min-height: 225px;
-  padding: 16px 14px 13px;
-  border: 2px solid #c99746;
+  width: 182px;
+  min-height: 230px;
+  padding: 16px 14px 14px;
+  border: 2px solid var(--warm-gold);
   border-radius: 5px 12px 12px 5px;
-  background: radial-gradient(circle at 50% 50%, #173b60, #071426 60%, #040914);
-  box-shadow: 12px 13px 0 #0b101a, 0 0 34px #e5ac4b30;
+  background: radial-gradient(circle at 50% 50%, #2A1745 0%, #1A0D2E 65%, #100B1C 100%);
+  box-shadow: 12px 14px 0 #07030D, 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(214, 172, 85, 0.22);
   text-align: center;
   transform: perspective(800px) rotateY(-5deg);
+  animation: bookFloat 4.5s ease-in-out infinite;
 }
-.book:before {
+.book::before {
   content: "";
   position: absolute;
   left: 7px;
   top: 0;
   bottom: 0;
   width: 3px;
-  background: #f0ca76aa;
+  background: linear-gradient(180deg, rgba(247, 216, 139, 0.8), rgba(214, 172, 85, 0.4));
 }
 .bookbrand {
-  font: 700 10px Georgia, serif;
-  color: var(--gold2);
+  font: 700 10px var(--font-serif);
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
 }
 .booktitle {
-  font: 700 18px/1.05 Georgia, serif;
-  color: #ffe2a0;
+  font: 700 18px/1.08 var(--font-serif);
+  color: #FFE6A8;
   margin: 14px 0 8px;
+  letter-spacing: 0.02em;
 }
 .booksmall {
   font-size: 8px;
-  letter-spacing: .11em;
-  color: #dbe5f6;
+  letter-spacing: .12em;
+  color: var(--muted-lavender);
 }
 .numcircle {
-  width: 82px;
-  height: 82px;
-  border: 1px solid #d6ad5c;
+  width: 80px;
+  height: 80px;
+  border: 1.5px solid var(--warm-gold);
   border-radius: 50%;
   display: grid;
   place-items: center;
   margin: 10px auto;
-  background: radial-gradient(circle, #d6ad5c26, transparent 70%);
-  box-shadow: 0 0 20px #d6ad5c19;
+  background: radial-gradient(circle, rgba(214, 172, 85, 0.18) 0%, transparent 70%);
+  box-shadow: 0 0 16px rgba(214, 172, 85, 0.25);
 }
 .numcircle span {
-  font: 46px Georgia, serif;
-  color: #ffe19a;
-  text-shadow: 0 0 15px #d6ad5c99;
+  font: 46px var(--font-serif);
+  color: var(--gold-light);
+  text-shadow: 0 0 14px rgba(214, 172, 85, 0.8);
 }
 .bookfoot {
   font-size: 8px;
-  color: #e9d8b0;
+  color: var(--ivory-dim);
   letter-spacing: .1em;
 }
 
-/* Benefits Grid */
+/* ==========================================================================
+   Benefits Grid (Vedic Pillars)
+   ========================================================================== */
 .benefits {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
-  margin: 14px 0 20px;
+  gap: 10px;
+  margin: 16px 0 22px;
 }
 .benefit {
-  border: 1px solid #d6ad5c38;
-  background: #0c1930;
-  border-radius: 13px;
-  padding: 12px;
-  transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .3s ease;
+  border: 1px solid var(--purple-card-border);
+  background: var(--purple-card);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 .benefit:hover {
-  transform: translateY(-4px);
-  border-color: #d6ad5c88;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 16px rgba(214, 173, 92, 0.2);
+  transform: translateY(-3px);
+  border-color: var(--purple-card-hover);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(214, 172, 85, 0.16);
 }
 .benefit-year {
-  background: linear-gradient(145deg, #172a47, #101d32);
-  border-color: #d6ad5c;
-  box-shadow: 0 7px 18px #d6ad5c1a;
+  background: linear-gradient(155deg, rgba(36, 20, 59, 0.98), rgba(29, 16, 48, 0.98));
+  border-color: rgba(214, 172, 85, 0.5);
+  box-shadow: 0 6px 20px rgba(214, 172, 85, 0.12);
 }
 .benefit-year h3 {
-  color: #ffe19a;
+  color: var(--gold-light);
 }
 .year-tag {
   display: inline-block;
-  margin: 0 0 5px;
-  padding: 3px 7px;
-  border-radius: 99px;
-  background: #d6ad5c22;
-  color: #ffe19a;
+  margin: 0 0 6px;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: rgba(214, 172, 85, 0.18);
+  border: 1px solid rgba(214, 172, 85, 0.35);
+  color: var(--gold-light);
   font-size: 8px;
   font-weight: 900;
   letter-spacing: .08em;
@@ -848,247 +692,322 @@ h1 {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #d6ad5c20;
-  color: var(--gold2);
-  font-size: 17px;
-  margin-bottom: 7px;
-  transition: transform .3s ease, background .3s ease;
-}
-.benefit:hover .ico {
-  transform: scale(1.12);
-  background: #d6ad5c40;
+  background: rgba(214, 172, 85, 0.14);
+  color: var(--gold-light);
+  font-size: 15px;
+  margin-bottom: 8px;
 }
 .benefit h3 {
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.25;
   margin: 0 0 5px;
+  color: var(--soft-ivory);
 }
 .benefit p {
-  font-size: 11px;
-  color: var(--muted);
+  font-size: 11.5px;
+  color: var(--muted-lavender);
   margin: 0;
   line-height: 1.45;
 }
-.mid-cta {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: -6px 0 16px;
-  padding: 13px 20px;
-  border-radius: 13px;
-  text-decoration: none;
-  font-size: 13.5px;
-  font-weight: 850;
-  cursor: pointer;
-  transform-origin: center center;
-  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
-  animation: btnHarmonicRotate 5s ease-in-out infinite 2.4s, btnMidCtaAura 3.2s ease-in-out infinite;
-}
 
-/* Sample Section & Nested High-Converting CTA Box */
+/* ==========================================================================
+   Sample Report Section (Authentic Vedic Parchment Feel)
+   ========================================================================== */
 .sample {
-  background: var(--ivory);
-  color: var(--ink);
-  border-radius: 17px;
-  padding: 18px 14px;
-  margin: 18px 0;
+  background: var(--soft-ivory);
+  color: var(--midnight-plum);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  margin: 22px 0;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
 }
 .sample h2 {
   text-align: center;
-  font: 700 23px Georgia, serif;
+  font: 700 23px var(--font-serif);
   margin: 0 0 4px;
+  color: var(--midnight-plum);
 }
 .sample > p {
   text-align: center;
-  font-size: 12px;
-  color: #596278;
-  margin: 0 0 14px;
+  font-size: 12.5px;
+  color: #554868;
+  margin: 0 0 16px;
 }
 .samplegrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
+  gap: 10px;
 }
 .sheet {
-  background: #fffdf8;
-  border: 1px solid #eadbc1;
-  border-radius: 10px;
-  padding: 11px 9px;
-  min-height: 126px;
-  box-shadow: 0 4px 10px #17213a0a;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.sheet:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: #FFFDF9;
+  border: 1px solid #E5D7C2;
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  min-height: 128px;
+  box-shadow: 0 4px 12px rgba(16, 11, 28, 0.06);
 }
 .sheet-title {
-  font: 700 10px Georgia, serif;
+  font: 700 10px var(--font-serif);
   text-align: center;
-  margin-bottom: 9px;
+  margin-bottom: 8px;
+  letter-spacing: .06em;
+  color: #7A531C;
 }
 .numbers {
   display: flex;
   justify-content: space-around;
-  color: #a86f27;
-  font: 700 21px Georgia, serif;
-  border-bottom: 1px solid #efdfc7;
+  color: #9E6418;
+  font: 700 22px var(--font-serif);
+  border-bottom: 1px solid #F0E3D1;
   padding-bottom: 8px;
 }
 .lines {
   height: 5px;
-  background: #e8dfd1;
+  background: #E8DCCB;
   border-radius: 8px;
   margin: 8px 0;
 }
 .sheet small {
-  font-size: 9px;
-  color: #5b6477;
+  font-size: 9.5px;
+  color: #635377;
 }
 
-/* High-Converting CTA Card Inside Sample Section */
+/* High-Converting Nested CTA Box */
 .sample-cta-box {
-  margin-top: 15px;
-  background: linear-gradient(145deg, #0d1e39, #071324);
-  border: 1.5px solid rgba(214, 173, 92, 0.55);
-  border-radius: 14px;
-  padding: 16px 14px;
+  margin-top: 16px;
+  background: linear-gradient(155deg, #24143B 0%, #1B0F2E 60%, #100B1C 100%);
+  border: 1.5px solid rgba(214, 172, 85, 0.45);
+  border-radius: var(--radius-md);
+  padding: 18px 14px;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
 }
 .sample-badge {
   display: inline-block;
-  padding: 3px 9px;
-  border-radius: 99px;
-  background: rgba(214, 173, 92, 0.2);
-  color: #ffe19a;
-  border: 1px solid rgba(214, 173, 92, 0.45);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(214, 172, 85, 0.16);
+  color: var(--gold-light);
+  border: 1px solid rgba(214, 172, 85, 0.4);
   font-size: 8.5px;
   font-weight: 900;
   letter-spacing: .08em;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 .sample-cta-title {
-  color: #fff;
-  font: 700 15px/1.3 Georgia, serif;
-  margin: 0 0 5px;
+  color: var(--soft-ivory);
+  font: 700 15.5px/1.3 var(--font-serif);
+  margin: 0 0 6px;
 }
 .sample-cta-desc {
-  color: #bdc8dc;
-  font-size: 11px;
+  color: var(--muted-lavender);
+  font-size: 11.5px;
   line-height: 1.45;
-  margin: 0 auto 12px;
-  max-width: 440px;
-}
-.sample-buy-btn {
-  margin: 0 auto;
-  max-width: 100%;
+  margin: 0 auto 14px;
+  max-width: 460px;
 }
 .sample-subtext {
   font-size: 10px;
-  color: #9cb0d1;
-  margin-top: 8px;
+  color: var(--muted-lavender);
+  margin-top: 9px;
+  opacity: 0.9;
 }
 .sample-preview-link {
   display: inline-block;
-  color: #17294b;
+  color: #24143B;
   font-size: 12px;
   font-weight: 750;
   text-decoration: underline;
   text-underline-offset: 3px;
   padding: 8px 12px;
-  margin-top: 6px;
-  transition: color .15s ease;
+  margin-top: 8px;
+  transition: color .2s ease;
 }
 .sample-preview-link:hover {
-  color: #0b1830;
+  color: #000;
 }
 
-/* Pricing Box */
+/* ==========================================================================
+   Trust & FAQ Section (New Senior UI/UX Improvement)
+   ========================================================================== */
+.faq-section {
+  border: 1px solid var(--purple-card-border);
+  background: var(--purple-card);
+  border-radius: var(--radius-lg);
+  padding: 22px 18px;
+  margin: 22px 0;
+  box-shadow: var(--shadow-card);
+}
+.faq-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.faq-header h2 {
+  font: 700 21px/1.2 var(--font-serif);
+  margin: 0 0 4px;
+  color: var(--gold-light);
+}
+.faq-header p {
+  font-size: 12px;
+  color: var(--muted-lavender);
+  margin: 0;
+}
+.faq-list {
+  display: grid;
+  gap: 9px;
+}
+.faq-item {
+  border: 1px solid rgba(185, 168, 209, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(16, 11, 28, 0.5);
+  overflow: hidden;
+  transition: border-color .2s ease;
+}
+.faq-item[open] {
+  border-color: rgba(214, 172, 85, 0.4);
+}
+.faq-q {
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--soft-ivory);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  user-select: none;
+}
+.faq-q::-webkit-details-marker {
+  display: none;
+}
+.faq-icon {
+  font-size: 16px;
+  color: var(--gold-light);
+  transition: transform .25s ease;
+}
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-a {
+  padding: 0 14px 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted-lavender);
+  border-top: 1px solid rgba(185, 168, 209, 0.08);
+  margin-top: 2px;
+  padding-top: 9px;
+}
+
+/* ==========================================================================
+   Pricing & Master Conversion Section
+   ========================================================================== */
 .pricebox {
-  border: 1.5px solid var(--gold);
-  background: linear-gradient(140deg, #fff7e7, #f0dfbd);
-  border-radius: 17px;
-  padding: 18px 15px;
-  color: var(--ink);
-  margin-top: 18px;
-  box-shadow: 0 12px 34px #0003;
+  border: 1.5px solid var(--warm-gold);
+  background: linear-gradient(155deg, #24143B 0%, #1A0D2E 50%, #100B1C 100%);
+  border-radius: var(--radius-lg);
+  padding: 22px 18px;
+  color: var(--soft-ivory);
+  margin-top: 22px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 24px rgba(214, 172, 85, 0.25);
   scroll-margin-top: 72px;
   transition: transform .3s ease, box-shadow .3s ease;
 }
 .pricebox.highlight {
-  box-shadow: 0 0 0 3px #ffe19a, 0 16px 45px rgba(214, 173, 92, 0.5);
+  box-shadow: 0 0 0 3px var(--gold-light), 0 18px 50px rgba(214, 172, 85, 0.6);
   transform: translateY(-2px);
 }
 .price-head {
-  font: 700 23px/1.15 Georgia, serif;
-  margin: 0 0 5px;
+  font: 700 23px/1.2 var(--font-serif);
+  margin: 0 0 6px;
+  color: var(--gold-light);
 }
 .price-desc {
-  font-size: 12px;
-  color: #535e72;
-  margin: 0 0 12px;
+  font-size: 12.5px;
+  color: var(--muted-lavender);
+  margin: 0 0 14px;
 }
 .includes {
-  font-size: 12px;
-  color: #344056;
+  font-size: 12.5px;
+  color: var(--soft-ivory);
   padding: 0;
   list-style: none;
-  margin: 12px 0;
+  margin: 14px 0 16px;
+  display: grid;
+  gap: 8px;
 }
 .includes li {
-  margin: 6px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  line-height: 1.4;
+}
+.check-icon {
+  color: var(--emerald);
+  font-weight: 900;
+  font-size: 13px;
+  flex-shrink: 0;
 }
 .price-line {
   display: flex;
   align-items: baseline;
-  gap: 9px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin: 10px 0 13px;
+  margin: 12px 0 16px;
 }
 .price {
-  font: 800 36px Georgia, serif;
-  color: #8d531b;
+  font: 800 38px/1 var(--font-serif);
+  color: var(--gold-light);
+  text-shadow: 0 0 16px rgba(214, 172, 85, 0.5);
 }
 .offer-note {
-  font-size: 10px;
-  color: #5c6577;
+  font-size: 11px;
+  color: var(--muted-lavender);
 }
-
 .trust {
   display: flex;
   justify-content: space-around;
   gap: 8px;
   flex-wrap: wrap;
-  margin: 12px 0;
-  color: #cbd3e2;
-  font-size: 10px;
+  margin: 14px 0;
+  color: var(--muted-lavender);
+  font-size: 10.5px;
 }
 .trust span {
   display: flex;
   align-items: center;
   gap: 5px;
 }
+.trust strong {
+  color: var(--emerald);
+}
 .decline {
   display: block;
   text-align: center;
-  color: #c2cbe0;
-  font-size: 13px;
+  color: var(--muted-lavender);
+  font-size: 12.5px;
   margin: 18px auto 0;
   text-underline-offset: 4px;
+  text-decoration: underline;
+  opacity: 0.85;
+  transition: opacity .2s ease;
+}
+.decline:hover {
+  opacity: 1;
+  color: var(--soft-ivory);
 }
 .disclaimer {
   text-align: center;
-  color: #8795ae;
+  color: var(--lavender-dim);
   font-size: 10px;
-  margin-top: 14px;
+  line-height: 1.5;
+  margin-top: 16px;
 }
 
-/* Bottom Sticky Mobile Strip */
+/* ==========================================================================
+   Bottom Mobile Sticky Strip
+   ========================================================================== */
 .sticky {
   display: none;
 }
@@ -1100,55 +1019,64 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 9px 14px calc(9px + env(safe-area-inset-bottom));
-    background: linear-gradient(180deg, #071426ee, #040914);
-    border-top: 1px solid #d6ad5c55;
+    padding: 8px 14px calc(8px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(29, 16, 48, 0.96), rgba(16, 11, 28, 0.98));
+    border-top: 1px solid rgba(214, 172, 85, 0.35);
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
   }
   .sticky-price {
-    font-size: 12px;
-    color: #f5e4bd;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--gold-light);
     white-space: nowrap;
   }
   .sticky .btn {
-    min-height: 46px;
+    min-height: 44px;
     font-size: 13px;
-    padding: 10px;
+    padding: 9px 16px;
+    width: auto;
+    flex: 1;
+    max-width: 220px;
   }
 }
 
-/* Fallback Order Modal (Native Dialog) */
+/* ==========================================================================
+   Fallback Order Modal
+   ========================================================================== */
 .modalbox {
   max-width: 380px;
-  width: 100%;
-  border: 1px solid #d6ad5c66;
-  border-radius: 18px;
-  background: #0b1830;
-  padding: 24px;
+  width: 90%;
+  border: 1px solid var(--warm-gold);
+  border-radius: var(--radius-lg);
+  background: var(--purple-card);
+  padding: 24px 20px;
   text-align: center;
-  box-shadow: 0 20px 60px #0008;
-  color: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  color: var(--soft-ivory);
 }
 .modalbox::backdrop {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(9, 5, 17, 0.85);
+  backdrop-filter: blur(6px);
 }
 .modalbox h2 {
-  font: 700 25px Georgia, serif;
+  font: 700 24px var(--font-serif);
   margin: 0 0 10px;
-  color: var(--gold2);
+  color: var(--gold-light);
 }
 .modalbox p {
-  font-size: 14px;
-  color: #d4dbea;
-}
-.modalbox button {
-  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--muted-lavender);
+  margin: 0 0 16px;
 }
 
-/* Animations */
+/* ==========================================================================
+   Keyframes & Animations
+   ========================================================================== */
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes bookFloat {
@@ -1156,29 +1084,17 @@ h1 {
   50% { transform: perspective(800px) rotateY(-3deg) translateY(-8px); }
 }
 
-@keyframes omPulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(214, 173, 92, 0.2);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 22px rgba(214, 173, 92, 0.55);
-  }
-}
-
-.hero-title, .lead, .session-note, .book-scene, .benefits, .sample, .pricebox {
-  animation: riseIn .65s cubic-bezier(.2,.8,.2,1) both;
+.hero-title, .lead, .session-note, .book-scene, .benefits, .sample, .faq-section, .pricebox {
+  animation: riseIn .6s cubic-bezier(.2,.8,.2,1) both;
 }
 .hero-title { animation-delay: .05s; }
 .lead { animation-delay: .12s; }
 .session-note { animation-delay: .18s; }
-.book { animation: bookFloat 4.5s ease-in-out infinite; }
 
 /* Responsive Media Queries */
 @media(min-width: 600px) {
   .wrap {
-    padding-top: 76px;
+    padding-top: 80px;
   }
   .benefits {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1214,13 +1130,13 @@ h1 {
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 64px;
-    padding-bottom: 125px;
+    padding-bottom: 120px;
   }
   .confirm {
-    padding: 15px 12px;
+    padding: 16px 12px;
   }
   .rowline {
-    font-size: 11px;
+    font-size: 11.5px;
   }
   .benefit {
     padding: 11px 9px;
@@ -1229,7 +1145,7 @@ h1 {
     font-size: 12px;
   }
   .benefit p {
-    font-size: 10px;
+    font-size: 10.5px;
   }
   .samplegrid {
     gap: 7px;
@@ -1257,7 +1173,7 @@ h1 {
 <header class="top-sticky-bar" id="topStickyBar" role="banner" aria-label="Special offer header">
   <div class="top-sticky-wrap">
     <div class="top-sticky-info">
-      <span class="top-badge">EXCLUSIVE ADD-ON</span>
+      <span class="top-badge">★ EXCLUSIVE ADD-ON</span>
       <div class="top-text">
         <span class="top-title">Personalized Numerology Blueprint</span>
         <span class="top-price">₹299 <s class="top-old">₹999</s></span>
@@ -1272,37 +1188,45 @@ h1 {
 </header>
 
 <main class="wrap">
+  <!-- Brand Header -->
   <header class="brand">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiNENkFENUMiIHN0cm9rZS13aWR0aD0iMi41Ij48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSIyNSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjM1Ii8+PHBhdGggZD0iTTYwIDUgTDY3IDI1IEw4NiAxMiBMODAgMzQgTDEwNSAzNSBMODcgNTEgTDEwOCA2NCBMODQgNzAgTDk1IDkzIEw3MiA4NSBMNjAgMTEyIEw0OCA4NSBMMjUgOTMgTDM2IDcwIEwxMiA2NCBMMzMgNTEgTDE1IDM1IEw0MCAzNCBMMzQgMTIgTDUzIDI1IFoiLz48L2c+PHRleHQgeD0iNjAiIHk9IjY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjMyIiBmaWxsPSIjRkZFMTlBIiBmb250LWZhbWlseT0ic2VyaWYiPuClkDwvdGV4dD48L3N2Zz4=" alt="Mahaacharya logo">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiNENkFCNTUiIHN0cm9rZS13aWR0aD0iMi41Ij48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSIyNSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjM1Ii8+PHBhdGggZD0iTTYwIDUgTDY3IDI1IEw4NiAxMiBMODAgMzQgTDEwNSAzNSBMODcgNTEgTDEwOCA2NCBMODQgNzAgTDk1IDkzIEw3MiA4NSBMNjAgMTEyIEw0OCA4NSBMMjUgOTMgTDM2IDcwIEwxMiA2NCBMMzMgNTEgTDE1IDM1IEw0MCAzNCBMMzQgMTIgTDUzIDI1IFoiLz48L2c+PHRleHQgeD0iNjAiIHk9IjY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjMyIiBmaWxsPSIjRjNENThDIiBmb250LWZhbWlseT0ic2VyaWYiPuClkDwvdGV4dD48L3N2Zz4=" alt="Mahaacharya Vedic emblem" width="44" height="44">
     <div>
       <div class="brand-name">Mahaacharya</div>
       <div class="brand-sub">Vedic Wisdom for a Better Tomorrow</div>
     </div>
   </header>
 
+  <!-- Step 1: Webinar Seat Confirmation -->
   <section class="confirm" aria-labelledby="payment-title">
-    <div aria-hidden="true" style="font-size:28px;color:#20c76a">✓</div>
-    <h2 id="payment-title">Your Webinar Seat Is Confirmed</h2>
-    <p class="sub">Aapki webinar booking confirm ho gayi hai. Neeche apna optional Numerology Blueprint dekhein.</p>
+    <div class="confirm-status">
+      <span aria-hidden="true">✓</span> WEBINAR SEAT CONFIRMED
+    </div>
+    <h2 id="payment-title">Aapka Webinar Seat Book Ho Gaya Hai</h2>
+    <p class="sub">Webinar details neeche confirm hain. Agle live session se pehle apna optional Personal Blueprint dekhein.</p>
+    
     <div class="rows">
       <div class="rowline"><span>Date</span><strong>[Add webinar date]</strong></div>
       <div class="rowline"><span>Time</span><strong>[Add start time and timezone]</strong></div>
-      <div class="rowline"><span>Platform</span><strong>Zoom Live · [Add webinar join link]</strong></div>
-      <div class="rowline"><span>Access</span><strong style="color:#20c76a">Confirmed</strong></div>
+      <div class="rowline"><span>Platform</span><strong>Zoom Live · [Add join link]</strong></div>
+      <div class="rowline"><span>Access</span><strong style="color:var(--emerald)">Confirmed ✓</strong></div>
     </div>
+    
     <a class="btn btn-wa" href="#" id="communityButton">
-      <span class="btn-rot-icon" aria-hidden="true">✦</span>
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84-1.56 1.56-3.64 2.42-5.84 2.42-1.42 0-2.82-.37-4.06-1.08l-.29-.17-3.11.82.83-3.03-.19-.31c-.78-1.27-1.19-2.73-1.19-4.24 0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.01 2.58c.13.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
       <span>Join the WhatsApp Community</span>
       <span class="btn-arrow" aria-hidden="true">→</span>
     </a>
   </section>
 
+  <!-- Divider -->
   <div class="divider"><span class="om">ॐ</span></div>
 
+  <!-- Step 2: One-Time Attendee Add-On Offer -->
   <section id="oto">
     <div class="hero-offer-banner" role="region" aria-label="Webinar attendee special offer">
       <div class="banner-info">
-        <span class="hero-offer-tag">★ WEBINAR ATTENDEE OFFER</span>
+        <span class="hero-offer-tag">★ WEBINAR ATTENDEE SPECIAL OFFER</span>
         <strong>
           Personal Blueprint · <span class="banner-price">₹299</span>
           <s class="banner-old">₹999</s>
@@ -1316,21 +1240,23 @@ h1 {
       </a>
     </div>
 
-    <div class="pill">WEBINAR ATTENDEES KE LIYE · OPTIONAL OFFER</div>
-    <h1 class="hero-title">Apne Numbers.<br><span class="gold">Apna Personal Blueprint.</span></h1>
-    <p class="lead">Apne birth details ke basis par ek <strong>Personalized Numerology Blueprint</strong> paayein — aapke core numbers, unke meanings, aur reflection prompts ek easy-to-read report mein.</p>
-    <p class="session-note">Agar yeh aapke liye useful lage, apni webinar seat ke saath abhi add karein.</p>
+    <div class="pill">WEBINAR ATTENDEES KE LIYE · OPTIONAL ADD-ON</div>
+    <h1 class="hero-title">Apne Numbers.<br><span class="gold-text">Apna Personal Blueprint.</span></h1>
+    <p class="lead">Apne exact birth details ke basis par ek <strong>Personalized Numerology Blueprint</strong> paayein — aapke core numbers, dasha cycles, aur practical reflection prompts ek premium report mein.</p>
+    <p class="session-note">Agar yeh aapke liye useful lage, apni webinar seat ke saath abhi one-click add karein.</p>
 
+    <!-- Hero CTA -->
     <div class="hero-cta">
       <a class="btn btn-buy" href="#pricebox">
         <span class="btn-rot-icon" aria-hidden="true">✦</span>
         <span>Get my Blueprint · ₹299</span>
         <span class="btn-arrow" aria-hidden="true">→</span>
       </a>
-      <a class="sample-link" href="sample-numerology-report.html">Read the sample report</a>
+      <a class="sample-link" href="sample-numerology-report.html">Read the sample report (PDF preview)</a>
     </div>
 
-    <div class="book-scene" role="img" aria-label="Personalized Numerology Blueprint report cover illustration">
+    <!-- 3D Book Scene -->
+    <div class="book-scene" role="img" aria-label="Personalized Numerology Blueprint 3D cover illustration">
       <div class="book">
         <div class="bookbrand">ॐ MAHAACHARYA</div>
         <div class="booksmall">YOUR PERSONAL GUIDE</div>
@@ -1340,56 +1266,58 @@ h1 {
       </div>
     </div>
 
+    <!-- Vedic Pillars / Benefits Grid -->
     <div class="benefits">
       <article class="benefit">
         <div class="ico">①</div>
         <h3>Core Numbers</h3>
-        <p>Life Path aur doosre core numbers ka meaning samajhne mein madad.</p>
+        <p>Life Path, Destiny aur Birth Number ka authentic Vedic meaning.</p>
       </article>
       <article class="benefit">
         <div class="ico">✦</div>
-        <h3>Career Reflection</h3>
-        <p>Apni strengths aur career patterns par sochne ke prompts.</p>
+        <h3>Career Guidance</h3>
+        <p>Apni core strengths aur suitable professional paths par reflection prompts.</p>
       </article>
       <article class="benefit">
         <div class="ico">♡</div>
-        <h3>Relationship Patterns</h3>
-        <p>Relationships ko samajhne ke liye thoughtful guidance.</p>
+        <h3>Relationships</h3>
+        <p>Personal relationships ko samajhne ke liye thoughtful guidance.</p>
       </article>
       <article class="benefit benefit-year">
         <div class="ico">☼</div>
         <span class="year-tag">NEXT 12 MONTHS</span>
-        <h3>Year-Ahead Reflection</h3>
-        <p>Agle saal ke themes aur planning prompts — reflection ke liye, fixed prediction nahi.</p>
+        <h3>Year-Ahead Themes</h3>
+        <p>Agle 12 maheeno ki dasha aur themes — actionable self-reflection ke liye.</p>
       </article>
     </div>
 
+    <!-- Mid-Page Secondary Bridge CTA -->
     <a class="mid-cta" href="#pricebox">
       <span class="btn-rot-icon" aria-hidden="true">✦</span>
       <span>See the ₹299 report offer</span>
       <span class="btn-arrow" aria-hidden="true">→</span>
     </a>
 
-    <!-- Sample Section with Added High-Converting CTA Box -->
+    <!-- Sample Report Section -->
     <section class="sample" aria-labelledby="sample-heading">
       <h2 id="sample-heading">Report Ke Andar Kya Milega?</h2>
-      <p>Sample reading: a fictional birth date with Life Path 3 and Birth Number 7.</p>
+      <p>Sample preview based on fictional birth date (Life Path 3 & Birth Number 7):</p>
       <div class="samplegrid">
         <div class="sheet">
           <div class="sheet-title">LIFE PATH</div>
           <div class="numbers"><span>3</span></div>
           <div class="lines"></div>
-          <small>Expression · Creativity</small>
+          <small>Expression · Creativity · Jupiter Ruling</small>
         </div>
         <div class="sheet">
           <div class="sheet-title">BIRTH NUMBER</div>
           <div class="numbers"><span>7</span></div>
           <div class="lines"></div>
-          <small>Reflection · Curiosity</small>
+          <small>Reflection · Deep Analysis · Ketu Influence</small>
         </div>
       </div>
 
-      <!-- High-Converting CTA Inside Sample Section -->
+      <!-- High-Converting CTA Box Inside Sample -->
       <div class="sample-cta-box">
         <span class="sample-badge">COMPLETE 20+ PAGE CUSTOM REPORT</span>
         <h3 class="sample-cta-title">Aapke Sabhi 9 Core Numbers, Dasha & Personalized Remedies</h3>
@@ -1399,7 +1327,7 @@ h1 {
           <span>Unlock All Numbers & Predictions · ₹299</span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
-        <div class="sample-subtext">✓ Instant Digital Access · One-Time ₹299 · Webinar Add-On</div>
+        <div class="sample-subtext">✓ Instant Digital Access · One-Time ₹299 · Lifetime Reference</div>
       </div>
 
       <div style="text-align:center;margin-top:10px">
@@ -1407,34 +1335,86 @@ h1 {
       </div>
     </section>
 
+    <!-- Trust & FAQ Accordion Section -->
+    <section class="faq-section" aria-labelledby="faq-heading">
+      <div class="faq-header">
+        <h2 id="faq-heading">Aapke Sawaal, Hamare Jawaab</h2>
+        <p>Blueprint add-on se jude zaroori sawaalon ke spasht jawaab</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary class="faq-q">
+            <span>Yeh report mujhe kab aur kaise milegi?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-a">
+            Instant digital access. Payment ke baad report generate hokar aapke WhatsApp aur registered email par high-quality PDF format mein deliver hoti hai, jise aap lifetime save aur print kar sakte hain.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>Kya yeh mere exact birth details par based hogi?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-a">
+            Haan, bilkul. Yeh generic reading nahi hai. Yeh aapke Date of Birth aur Naam ke specific Vedic numerology calculations par personalized banayi jaati hai.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>Agar main live webinar na attend kar paoon toh?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-a">
+            Aapki webinar booking bilkul safe rahegi. Yeh Numerology Blueprint aapka permanent reference guide hai aur live session ke bina bhi 100% useful hai.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>Kya koi monthly subscription ya hidden charge hai?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-a">
+            Nahi. Yeh sirf ek baar ka ₹299 one-time payment hai. Koi auto-debit ya hidden fee nahi hai.
+          </div>
+        </details>
+      </div>
+    </section>
+
     <!-- Price and Checkout Box -->
     <section class="pricebox" id="pricebox">
-      <div class="pill" style="margin-left:0;margin-bottom:11px">ONE-TIME PAYMENT · OPTIONAL ADD-ON</div>
+      <div class="pill" style="margin-left:0;margin-bottom:12px">ONE-TIME PAYMENT · OPTIONAL ADD-ON</div>
       <h2 class="price-head">Aapka Personal Numerology Blueprint</h2>
-      <p class="price-desc">Digital report. Apne time par padhein aur baad mein dobara refer karein.</p>
+      <p class="price-desc">Comprehensive digital PDF report. Apne time par padhein aur baad mein dobara refer karein.</p>
+      
       <ul class="includes">
-        <li>✓ Aapke core numbers ki plain-language explanation</li>
-        <li>✓ Career aur relationship reflection sections</li>
-        <li>✓ Year-ahead themes aur prompts</li>
+        <li><span class="check-icon">✓</span> <span>Aapke sabhi core Vedic numbers ki plain-language explanation</span></li>
+        <li><span class="check-icon">✓</span> <span>Career, finance aur relationship reflection sections</span></li>
+        <li><span class="check-icon">✓</span> <span>Agle 12 maheeno ke dasha themes aur planning prompts</span></li>
+        <li><span class="check-icon">✓</span> <span>Practical Vedic remedies aur self-reflection guidance</span></li>
+        <li><span class="check-icon">✓</span> <span>Instant digital delivery (WhatsApp & Email)</span></li>
       </ul>
+
       <div class="price-line">
         <span class="price">₹299</span>
-        <span class="offer-note">one-time · no subscription</span>
+        <span class="offer-note">one-time payment · no subscription</span>
       </div>
+
       <button class="btn btn-buy" id="buyButton" type="button">
         <span class="btn-rot-icon" aria-hidden="true">✦</span>
         <span>Haan, Blueprint Add Karein</span>
         <span class="btn-arrow" aria-hidden="true">→</span>
       </button>
+
       <div class="trust">
-        <span>✓ One-time payment</span>
-        <span>✓ Digital delivery</span>
-        <span>✓ Webinar booking par asar nahi</span>
+        <span><strong>✓</strong> One-time payment</span>
+        <span><strong>✓</strong> Instant digital delivery</span>
+        <span><strong>✓</strong> Webinar seat untouched</span>
       </div>
     </section>
 
     <a class="decline" href="#payment-title">Nahi, thanks — main sirf webinar attend karunga/karungi</a>
-    <p class="disclaimer">Numerology self-reflection aur personal insight ke liye hai. Yeh scientific prediction, guaranteed results, ya professional advice ka substitute nahi hai.</p>
+    <p class="disclaimer">Numerology self-reflection aur personal insight ke liye hai. Yeh scientific prediction, guaranteed results, ya medical/financial advice ka substitute nahi hai.</p>
   </section>
 </main>
 
