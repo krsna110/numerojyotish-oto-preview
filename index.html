@@ -102,9 +102,10 @@ body:before {
   font-weight: 400;
 }
 .btn-top-cta {
-  background: linear-gradient(180deg, #ffe39b, #d6a846);
-  color: #1d170b;
-  border-radius: 10px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 11px;
   padding: 8px 14px;
   font-size: 12.5px;
   font-weight: 850;
@@ -112,19 +113,13 @@ body:before {
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: 0 3px 14px rgba(214, 173, 92, 0.4);
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
+  justify-content: center;
+  gap: 7px;
   flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-}
-.btn-top-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(214, 173, 92, 0.75), 0 0 12px rgba(255, 225, 154, 0.4);
-}
-.btn-top-cta:active {
-  transform: scale(0.97);
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
+  animation: btnHarmonicRotate 5.2s ease-in-out infinite 1.2s, btnGoldAura 3.2s ease-in-out infinite;
 }
 
 /* Page Layout */
@@ -198,45 +193,343 @@ body:before {
   text-align: right;
 }
 
-/* Base Buttons */
+/* Eye-Catchy Rotating Action Buttons System */
 .btn {
   border: 0;
-  border-radius: 13px;
+  border-radius: 14px;
   min-height: 54px;
-  padding: 14px 17px;
+  padding: 13px 20px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 10px;
   text-decoration: none;
   font-size: 15px;
   font-weight: 850;
+  letter-spacing: 0.015em;
   cursor: pointer;
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
+  box-sizing: border-box;
+  transform-origin: center center;
+  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
+  will-change: transform, box-shadow;
 }
-.btn span[aria-hidden="true"] {
-  display: inline-block;
-  transition: transform .25s ease;
+
+/* 360-Degree Continuous Rotating Border Beam */
+.btn-buy::before,
+.btn-wa::before,
+.btn-top-cta::before,
+.hero-offer-btn::before,
+.mid-cta::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  padding-bottom: 300%;
+  margin-top: -150%;
+  margin-left: -150%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: btnSpinBorderBeam 3.2s linear infinite;
 }
-.btn:hover span[aria-hidden="true"] {
-  transform: translateX(5px);
+
+@keyframes btnSpinBorderBeam {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.btn:active {
-  transform: scale(0.97);
+
+/* Conic Border Beam Gradients per Button Theme */
+.btn-buy::before,
+.btn-top-cta::before,
+.hero-offer-btn::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.95) 25deg,
+    #ffe69a 50deg,
+    #e5a42a 85deg,
+    transparent 125deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.95) 205deg,
+    #ffe69a 230deg,
+    #e5a42a 265deg,
+    transparent 305deg,
+    transparent 360deg
+  );
+}
+
+.btn-wa::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.95) 25deg,
+    #86efac 50deg,
+    #22c55e 85deg,
+    transparent 125deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.95) 205deg,
+    #86efac 230deg,
+    #22c55e 265deg,
+    transparent 305deg,
+    transparent 360deg
+  );
+}
+
+.mid-cta::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #ffe19a 30deg,
+    #d6ad5c 75deg,
+    transparent 120deg,
+    transparent 180deg,
+    #ffe19a 210deg,
+    #d6ad5c 255deg,
+    transparent 300deg,
+    transparent 360deg
+  );
+}
+
+/* Inner Background Surface (inset 2px reveals the rotating border beam) */
+.btn-buy::after,
+.btn-wa::after,
+.btn-top-cta::after,
+.hero-offer-btn::after,
+.mid-cta::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity .25s ease, filter .25s ease;
+}
+
+.btn-buy::after,
+.btn-top-cta::after,
+.hero-offer-btn::after {
+  background: 
+    linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.45) 45%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.45) 55%, transparent 80%),
+    linear-gradient(180deg, #fff2be 0%, #ffd269 22%, #e5a42a 72%, #cb8918 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: -150% 0, 0 0;
+  animation: btnShimmerSweep 4.2s ease-in-out infinite;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85),
+              inset 0 -2px 4px rgba(135, 78, 2, 0.35);
+}
+
+.btn-wa::after {
+  background: 
+    linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.4) 45%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0.4) 55%, transparent 80%),
+    linear-gradient(180deg, #3cf582 0%, #20c76a 26%, #159b4e 74%, #0d7539 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: -150% 0, 0 0;
+  animation: btnShimmerSweep 4.2s ease-in-out infinite;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8),
+              inset 0 -2px 4px rgba(4, 38, 19, 0.4);
+}
+
+.mid-cta::after {
+  background: 
+    linear-gradient(110deg, transparent 20%, rgba(255, 225, 154, 0.2) 45%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 225, 154, 0.2) 55%, transparent 80%),
+    linear-gradient(180deg, #142749 0%, #0c1830 50%, #071224 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: -150% 0, 0 0;
+  animation: btnShimmerSweep 4.5s ease-in-out infinite;
+  box-shadow: inset 0 1px 1px rgba(255, 225, 154, 0.4),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes btnShimmerSweep {
+  0%, 25% {
+    background-position: -150% 0, 0 0;
+  }
+  65%, 100% {
+    background-position: 250% 0, 0 0;
+  }
+}
+
+/* Foreground Content Layer */
+.btn > *,
+.btn-top-cta > *,
+.hero-offer-btn > *,
+.mid-cta > * {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-buy,
+.btn-top-cta,
+.hero-offer-btn {
+  color: #171003;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-wa {
+  color: #03200f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.mid-cta {
+  color: #ffe19a;
+  text-shadow: 0 0 12px rgba(255, 225, 154, 0.5);
+}
+
+/* Continuous 360-Degree Rotating Sparkle/Chakra Icon */
+.btn-rot-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  transform-origin: center center;
+  animation: btnSpinIcon 3.6s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.85));
+  flex-shrink: 0;
+}
+.btn-top-cta .btn-rot-icon,
+.hero-offer-btn .btn-rot-icon {
+  font-size: 13px;
+}
+@keyframes btnSpinIcon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Harmonic Rotating Sway for Constant Eye-Catchy Attention */
+@keyframes btnHarmonicRotate {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-1.5deg) scale(1.015);
+  }
+  40% {
+    transform: rotate(1.5deg) scale(1.015);
+  }
+  60% {
+    transform: rotate(-0.8deg) scale(1.008);
+  }
+  80% {
+    transform: rotate(0.8deg) scale(1.008);
+  }
+}
+
+/* Pulsing Glowing Auras */
+@keyframes btnGoldAura {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(214, 173, 92, 0.42),
+                0 0 22px rgba(255, 214, 102, 0.28),
+                0 10px 24px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(214, 173, 92, 0.75),
+                0 0 38px rgba(255, 225, 154, 0.65),
+                0 0 12px rgba(255, 255, 255, 0.5),
+                0 12px 28px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes btnEmeraldAura {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(32, 199, 106, 0.42),
+                0 0 22px rgba(52, 224, 115, 0.3),
+                0 10px 24px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(32, 199, 106, 0.75),
+                0 0 40px rgba(74, 222, 128, 0.65),
+                0 0 14px rgba(255, 255, 255, 0.5),
+                0 12px 28px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes btnMidCtaAura {
+  0%, 100% {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45),
+                0 0 16px rgba(214, 173, 92, 0.25);
+  }
+  50% {
+    box-shadow: 0 8px 26px rgba(214, 173, 92, 0.55),
+                0 0 30px rgba(255, 225, 154, 0.45),
+                0 0 10px rgba(214, 173, 92, 0.4);
+  }
+}
+
+/* Idle Rotating Sway and Aura Assignments */
+.btn-buy {
+  animation: btnHarmonicRotate 5s ease-in-out infinite, btnGoldAura 3.2s ease-in-out infinite;
 }
 .btn-wa {
-  background: linear-gradient(180deg, #25d366, #1aa34e);
-  color: #042513;
-  box-shadow: 0 6px 18px rgba(32, 199, 106, 0.32);
-  animation: waGlow 4.2s ease-in-out infinite;
+  animation: btnHarmonicRotate 5s ease-in-out infinite 0.6s, btnEmeraldAura 3.2s ease-in-out infinite;
 }
+
+/* Interactive Hover & Active 3D Rotate Reactions */
+.btn:hover,
+.btn-top-cta:hover,
+.hero-offer-btn:hover,
+.mid-cta:hover {
+  transform: translateY(-3px) rotate(-1.5deg) scale(1.03);
+  animation-play-state: paused;
+}
+
+.btn-buy:hover,
+.btn-top-cta:hover,
+.hero-offer-btn:hover {
+  box-shadow: 0 12px 34px rgba(214, 173, 92, 0.85),
+              0 0 45px rgba(255, 225, 154, 0.75),
+              0 0 16px rgba(255, 255, 255, 0.7),
+              0 14px 32px rgba(0, 0, 0, 0.55);
+}
+
 .btn-wa:hover {
-  transform: translateY(-2px) scale(1.015);
-  box-shadow: 0 12px 28px rgba(32, 199, 106, 0.65), 0 0 18px rgba(32, 199, 106, 0.35);
-  color: #042513;
+  box-shadow: 0 12px 34px rgba(32, 199, 106, 0.85),
+              0 0 45px rgba(74, 222, 128, 0.75),
+              0 0 16px rgba(255, 255, 255, 0.7),
+              0 14px 32px rgba(0, 0, 0, 0.55);
+}
+
+.mid-cta:hover {
+  box-shadow: 0 12px 32px rgba(214, 173, 92, 0.65),
+              0 0 35px rgba(255, 225, 154, 0.55),
+              0 12px 28px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.btn:active,
+.btn-top-cta:active,
+.hero-offer-btn:active,
+.mid-cta:active {
+  transform: translateY(1px) rotate(1.2deg) scale(0.97);
+  transition-duration: .1s;
+}
+
+.btn:hover .btn-rot-icon,
+.btn-top-cta:hover .btn-rot-icon,
+.hero-offer-btn:hover .btn-rot-icon,
+.mid-cta:hover .btn-rot-icon {
+  animation-duration: 1.1s;
+  filter: drop-shadow(0 0 10px #ffffff);
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+}
+.btn:hover .btn-arrow,
+.btn-top-cta:hover .btn-arrow,
+.hero-offer-btn:hover .btn-arrow,
+.mid-cta:hover .btn-arrow {
+  transform: translateX(5px) scale(1.15);
 }
 .divider {
   display: flex;
@@ -399,9 +692,9 @@ h1 {
   letter-spacing: .04em;
 }
 .hero-offer-btn {
-  z-index: 1;
-  background: linear-gradient(180deg, #ffe39b, #d6a846);
-  color: #1d170b;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   font-size: 13px;
   font-weight: 850;
   white-space: nowrap;
@@ -410,17 +703,13 @@ h1 {
   border-radius: 11px;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  box-shadow: 0 4px 16px rgba(214, 173, 92, 0.45);
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
+  justify-content: center;
+  gap: 6px;
   flex-shrink: 0;
-}
-.hero-offer-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(214, 173, 92, 0.75), 0 0 14px rgba(255, 225, 154, 0.45);
-}
-.hero-offer-btn:active {
-  transform: scale(0.97);
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
+  animation: btnHarmonicRotate 5.2s ease-in-out infinite 1.8s, btnGoldAura 3.2s ease-in-out infinite;
 }
 
 /* Hero CTA */
@@ -456,26 +745,7 @@ h1 {
   margin: 4px 0 12px;
   overflow: hidden;
 }
-.orbit {
-  position: absolute;
-  width: 235px;
-  height: 235px;
-  border: 1px solid #d6ad5c55;
-  border-radius: 50%;
-  box-shadow: 0 0 45px #d6ad5c12, inset 0 0 35px #d6ad5c12;
-}
-.orbit:before, .orbit:after {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border: 1px dashed #d6ad5c55;
-  border-radius: 50%;
-}
-.orbit:after {
-  inset: 38px;
-  border-style: solid;
-  opacity: .5;
-}
+
 .book {
   position: relative;
   z-index: 1;
@@ -600,47 +870,23 @@ h1 {
   line-height: 1.45;
 }
 .mid-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   margin: -6px 0 16px;
-  padding: 13px;
-  border: 1.5px solid rgba(214, 173, 92, 0.55);
-  border-radius: 12px;
-  color: #ffe19a;
+  padding: 13px 20px;
+  border-radius: 13px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 850;
-  background: #0c1930;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), background .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-.mid-cta span {
-  display: inline-block;
-  transition: transform .25s ease;
-}
-.mid-cta:hover {
-  background: #112242;
-  border-color: #ffe19a;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(214, 173, 92, 0.45), 0 0 14px rgba(214, 173, 92, 0.25);
-  color: #fff;
-}
-.mid-cta:active {
-  transform: scale(0.98);
-}
-/* Shared icon transitions for action buttons */
-.btn-top-cta span,
-.hero-offer-btn span,
-.mid-cta span {
-  display: inline-block;
-  transition: transform .25s ease;
-}
-.btn-top-cta:hover span,
-.hero-offer-btn:hover span,
-.mid-cta:hover span {
-  transform: translateX(4px);
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, filter .28s ease;
+  animation: btnHarmonicRotate 5s ease-in-out infinite 2.4s, btnMidCtaAura 3.2s ease-in-out infinite;
 }
 
 /* Sample Section & Nested High-Converting CTA Box */
@@ -812,30 +1058,7 @@ h1 {
   font-size: 10px;
   color: #5c6577;
 }
-.btn-buy {
-  background: linear-gradient(180deg, #ffe39b, #d6a846);
-  color: #1d170b;
-  box-shadow: 0 6px 20px rgba(214, 173, 92, 0.38);
-  position: relative;
-  overflow: hidden;
-  animation: btnAuraGlow 4s ease-in-out infinite;
-}
-.btn-buy::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -120%;
-  width: 70%;
-  height: 200%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-  transform: skewX(-25deg);
-  animation: btnShimmerGentle 5.5s ease-in-out infinite;
-  pointer-events: none;
-}
-.btn-buy:hover {
-  transform: translateY(-3px) scale(1.015);
-  box-shadow: 0 14px 34px rgba(214, 173, 92, 0.75), 0 0 22px rgba(255, 225, 154, 0.55);
-}
+
 .trust {
   display: flex;
   justify-content: space-around;
@@ -928,38 +1151,11 @@ h1 {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes orbitGlow {
-  0%, 100% { opacity: .65; transform: scale(.98); }
-  50% { opacity: 1; transform: scale(1.03); }
-}
 @keyframes bookFloat {
   0%, 100% { transform: perspective(800px) rotateY(-5deg) translateY(0); }
   50% { transform: perspective(800px) rotateY(-3deg) translateY(-8px); }
 }
-@keyframes btnAuraGlow {
-  0%, 100% {
-    box-shadow: 0 6px 20px rgba(214, 173, 92, 0.38);
-  }
-  50% {
-    box-shadow: 0 10px 30px rgba(214, 173, 92, 0.65), 0 0 18px rgba(255, 225, 154, 0.45);
-  }
-}
-@keyframes waGlow {
-  0%, 100% {
-    box-shadow: 0 6px 18px rgba(32, 199, 106, 0.3);
-  }
-  50% {
-    box-shadow: 0 8px 26px rgba(32, 199, 106, 0.55), 0 0 14px rgba(32, 199, 106, 0.35);
-  }
-}
-@keyframes btnShimmerGentle {
-  0%, 25% {
-    left: -120%;
-  }
-  55%, 100% {
-    left: 200%;
-  }
-}
+
 @keyframes omPulse {
   0%, 100% {
     transform: scale(1);
@@ -977,7 +1173,6 @@ h1 {
 .hero-title { animation-delay: .05s; }
 .lead { animation-delay: .12s; }
 .session-note { animation-delay: .18s; }
-.orbit { animation: orbitGlow 5s ease-in-out infinite; }
 .book { animation: bookFloat 4.5s ease-in-out infinite; }
 
 /* Responsive Media Queries */
@@ -994,10 +1189,6 @@ h1 {
   .book {
     width: 195px;
     min-height: 250px;
-  }
-  .orbit {
-    width: 260px;
-    height: 260px;
   }
 }
 @media(max-width: 520px) {
@@ -1073,7 +1264,9 @@ h1 {
       </div>
     </div>
     <a href="#pricebox" class="btn-top-cta" id="topStickyCta">
-      Get Blueprint · ₹299 <span aria-hidden="true">→</span>
+      <span class="btn-rot-icon" aria-hidden="true">✦</span>
+      <span>Get Blueprint · ₹299</span>
+      <span class="btn-arrow" aria-hidden="true">→</span>
     </a>
   </div>
 </header>
@@ -1097,7 +1290,11 @@ h1 {
       <div class="rowline"><span>Platform</span><strong>Zoom Live · [Add webinar join link]</strong></div>
       <div class="rowline"><span>Access</span><strong style="color:#20c76a">Confirmed</strong></div>
     </div>
-    <a class="btn btn-wa" href="#" id="communityButton">Join the WhatsApp Community <span aria-hidden="true">→</span></a>
+    <a class="btn btn-wa" href="#" id="communityButton">
+      <span class="btn-rot-icon" aria-hidden="true">✦</span>
+      <span>Join the WhatsApp Community</span>
+      <span class="btn-arrow" aria-hidden="true">→</span>
+    </a>
   </section>
 
   <div class="divider"><span class="om">ॐ</span></div>
@@ -1112,7 +1309,11 @@ h1 {
           <span class="banner-save">70% OFF</span>
         </strong>
       </div>
-      <a href="#pricebox" class="hero-offer-btn">View offer ↓</a>
+      <a href="#pricebox" class="hero-offer-btn">
+        <span class="btn-rot-icon" aria-hidden="true">✦</span>
+        <span>View offer</span>
+        <span class="btn-arrow" aria-hidden="true">↓</span>
+      </a>
     </div>
 
     <div class="pill">WEBINAR ATTENDEES KE LIYE · OPTIONAL OFFER</div>
@@ -1121,12 +1322,15 @@ h1 {
     <p class="session-note">Agar yeh aapke liye useful lage, apni webinar seat ke saath abhi add karein.</p>
 
     <div class="hero-cta">
-      <a class="btn btn-buy" href="#pricebox">Get my Blueprint · ₹299 <span aria-hidden="true">→</span></a>
+      <a class="btn btn-buy" href="#pricebox">
+        <span class="btn-rot-icon" aria-hidden="true">✦</span>
+        <span>Get my Blueprint · ₹299</span>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
       <a class="sample-link" href="sample-numerology-report.html">Read the sample report</a>
     </div>
 
     <div class="book-scene" role="img" aria-label="Personalized Numerology Blueprint report cover illustration">
-      <div class="orbit"></div>
       <div class="book">
         <div class="bookbrand">ॐ MAHAACHARYA</div>
         <div class="booksmall">YOUR PERSONAL GUIDE</div>
@@ -1160,7 +1364,11 @@ h1 {
       </article>
     </div>
 
-    <a class="mid-cta" href="#pricebox">See the ₹299 report offer <span aria-hidden="true">→</span></a>
+    <a class="mid-cta" href="#pricebox">
+      <span class="btn-rot-icon" aria-hidden="true">✦</span>
+      <span>See the ₹299 report offer</span>
+      <span class="btn-arrow" aria-hidden="true">→</span>
+    </a>
 
     <!-- Sample Section with Added High-Converting CTA Box -->
     <section class="sample" aria-labelledby="sample-heading">
@@ -1187,7 +1395,9 @@ h1 {
         <h3 class="sample-cta-title">Aapke Sabhi 9 Core Numbers, Dasha & Personalized Remedies</h3>
         <p class="sample-cta-desc">Yeh sample sirf 2 numbers ka preview hai. Aapki personalized report mein saare core numbers, next 12-month dasha, aur Vedic remedies shamil hain.</p>
         <a href="#pricebox" class="btn btn-buy sample-buy-btn" id="sampleCtaBtn">
-          Unlock All Numbers & Predictions · ₹299 <span aria-hidden="true">→</span>
+          <span class="btn-rot-icon" aria-hidden="true">✦</span>
+          <span>Unlock All Numbers & Predictions · ₹299</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
         <div class="sample-subtext">✓ Instant Digital Access · One-Time ₹299 · Webinar Add-On</div>
       </div>
@@ -1211,7 +1421,11 @@ h1 {
         <span class="price">₹299</span>
         <span class="offer-note">one-time · no subscription</span>
       </div>
-      <button class="btn btn-buy" id="buyButton" type="button">Haan, Blueprint Add Karein <span aria-hidden="true">→</span></button>
+      <button class="btn btn-buy" id="buyButton" type="button">
+        <span class="btn-rot-icon" aria-hidden="true">✦</span>
+        <span>Haan, Blueprint Add Karein</span>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </button>
       <div class="trust">
         <span>✓ One-time payment</span>
         <span>✓ Digital delivery</span>
@@ -1227,14 +1441,21 @@ h1 {
 <!-- Bottom Sticky Bar for Mobile Screens -->
 <div class="sticky" aria-label="Quick offer action">
   <span class="sticky-price">Blueprint · ₹299</span>
-  <a class="btn btn-buy" href="#pricebox" id="stickyBuy">Offer dekhein <span aria-hidden="true">↑</span></a>
+  <a class="btn btn-buy" href="#pricebox" id="stickyBuy">
+    <span class="btn-rot-icon" aria-hidden="true">✦</span>
+    <span>Offer dekhein</span>
+    <span class="btn-arrow" aria-hidden="true">↑</span>
+  </a>
 </div>
 
 <!-- Fallback Order Modal -->
 <dialog class="modalbox" id="previewModal" aria-labelledby="modalTitle">
   <h2 id="modalTitle">Order Your Numerology Blueprint</h2>
   <p>The personalized report is ₹299, paid once. Please contact the person who shared this page to complete your order.</p>
-  <button class="btn btn-buy" id="closeModal" type="button">Understood</button>
+  <button class="btn btn-buy" id="closeModal" type="button">
+    <span class="btn-rot-icon" aria-hidden="true">✦</span>
+    <span>Understood</span>
+  </button>
 </dialog>
 
 <script>
