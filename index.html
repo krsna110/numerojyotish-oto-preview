@@ -309,6 +309,64 @@ body::before {
   will-change: transform, box-shadow;
 }
 
+/* ==========================================================================
+   Consistent, High-Converting Action Button System with Smooth Animations
+   ========================================================================== */
+.btn,
+.btn-top-cta,
+.hero-offer-btn,
+.mid-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  transform-origin: center center;
+  transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .25s ease, filter .25s ease, background .25s ease, border-color .25s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Ensure foreground text & icons stay above the animated shimmer */
+.btn > *,
+.btn-top-cta > *,
+.hero-offer-btn > *,
+.mid-cta > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Shimmer Light Streak Gliding Across All Buttons */
+.btn::after,
+.btn-top-cta::after,
+.hero-offer-btn::after,
+.mid-cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.45) 45%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0.45) 55%, transparent 80%);
+  transform: skewX(-22deg);
+  animation: ctaShimmerSweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes ctaShimmerSweep {
+  0%, 15% { left: -130%; }
+  60%, 100% { left: 190%; }
+}
+
 /* Primary CTAs (Warm Gold Liquid Sheen) */
 .btn-buy,
 .btn-top-cta {
@@ -318,14 +376,22 @@ body::before {
   box-shadow: 0 4px 18px rgba(214, 172, 85, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
+.btn-buy {
+  animation: ctaPulseGold 3s ease-in-out infinite;
+}
+.btn-top-cta {
+  animation: ctaPulseGold 3s ease-in-out infinite 1.2s;
+}
+
 .btn-buy:hover,
 .btn-top-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(214, 172, 85, 0.6), 0 0 14px rgba(247, 216, 139, 0.35);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(214, 172, 85, 0.75), 0 0 22px rgba(247, 216, 139, 0.55);
+  animation-play-state: paused;
 }
 .btn-buy:active,
 .btn-top-cta:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
   box-shadow: 0 2px 8px rgba(214, 172, 85, 0.3);
 }
 
@@ -336,13 +402,30 @@ body::before {
   border: 1px solid rgba(134, 239, 172, 0.6);
   box-shadow: 0 4px 18px rgba(32, 199, 106, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  animation: ctaPulseWa 3s ease-in-out infinite 0.6s;
+}
+.btn-wa svg {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform .25s ease;
+  animation: waIconFloat 2.8s ease-in-out infinite;
+}
+@keyframes waIconFloat {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.12) rotate(-5deg); }
+  75% { transform: scale(1.12) rotate(5deg); }
 }
 .btn-wa:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(32, 199, 106, 0.6), 0 0 16px rgba(74, 222, 128, 0.35);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(32, 199, 106, 0.75), 0 0 22px rgba(74, 222, 128, 0.55);
+  animation-play-state: paused;
+}
+.btn-wa:hover svg {
+  transform: scale(1.18);
+  animation-play-state: paused;
 }
 .btn-wa:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
 
 /* Secondary Action CTAs (Deep Purple with Warm Gold Rim) */
@@ -354,20 +437,28 @@ body::before {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(214, 172, 85, 0.15);
   backdrop-filter: blur(8px);
 }
+.hero-offer-btn {
+  animation: ctaPulsePurple 3.2s ease-in-out infinite 1.6s;
+}
+.mid-cta {
+  animation: ctaPulsePurple 3.2s ease-in-out infinite 2.2s;
+}
+
 .hero-offer-btn:hover,
 .mid-cta:hover {
   background: rgba(45, 25, 75, 0.98);
   border-color: #FFE6A8;
   color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(214, 172, 85, 0.4), 0 0 16px rgba(214, 172, 85, 0.2);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(214, 172, 85, 0.5), 0 0 18px rgba(214, 172, 85, 0.3);
+  animation-play-state: paused;
 }
 .hero-offer-btn:active,
 .mid-cta:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
 
-/* Specific Button Sizing */
+/* Button Sizing */
 .btn {
   min-height: 52px;
   padding: 13px 22px;
@@ -397,7 +488,7 @@ body::before {
   margin: -6px 0 16px;
 }
 
-/* Sparkle icon and arrow micro-interactions */
+/* Continuous 360-Degree Rotating Celestial Sparkle Icon */
 .btn-rot-icon {
   display: inline-flex;
   align-items: center;
@@ -405,25 +496,109 @@ body::before {
   font-size: 14px;
   line-height: 1;
   color: inherit;
-  transition: transform .25s ease;
+  transform-origin: center center;
+  animation: btnSpinIcon 3s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
+  flex-shrink: 0;
+}
+@keyframes btnSpinIcon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 .btn:hover .btn-rot-icon,
 .btn-top-cta:hover .btn-rot-icon,
 .hero-offer-btn:hover .btn-rot-icon,
 .mid-cta:hover .btn-rot-icon {
-  transform: rotate(90deg) scale(1.15);
+  animation-duration: 1s;
+  filter: drop-shadow(0 0 9px #ffffff);
 }
 
+/* Interactive Forward Arrow Glide on Hover and Idle Nudge */
 .btn-arrow {
   display: inline-block;
   font-weight: 850;
+  transform-origin: center center;
   transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+  animation: arrowNudge 2.6s ease-in-out infinite;
 }
+@keyframes arrowNudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3.5px); }
+}
+
+.hero-offer-btn .btn-arrow {
+  animation: arrowNudgeDown 2.6s ease-in-out infinite;
+}
+@keyframes arrowNudgeDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+#stickyBuy .btn-arrow {
+  animation: arrowNudgeUp 2.6s ease-in-out infinite;
+}
+@keyframes arrowNudgeUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
 .btn:hover .btn-arrow,
 .btn-top-cta:hover .btn-arrow,
-.hero-offer-btn:hover .btn-arrow,
 .mid-cta:hover .btn-arrow {
-  transform: translateX(4px);
+  transform: translateX(6px) scale(1.2);
+  animation-play-state: paused;
+}
+.hero-offer-btn:hover .btn-arrow {
+  transform: translateY(5px) scale(1.2);
+  animation-play-state: paused;
+}
+#stickyBuy:hover .btn-arrow {
+  transform: translateY(-5px) scale(1.2);
+  animation-play-state: paused;
+}
+
+/* Pulsing Breathing & Glow Keyframes */
+@keyframes ctaPulseGold {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 18px rgba(214, 172, 85, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.022);
+    box-shadow: 0 8px 30px rgba(214, 172, 85, 0.7), 0 0 20px rgba(247, 216, 139, 0.5), 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes ctaPulseWa {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 18px rgba(32, 199, 106, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.022);
+    box-shadow: 0 8px 30px rgba(32, 199, 106, 0.7), 0 0 20px rgba(74, 222, 128, 0.5), 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes ctaPulsePurple {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 10px rgba(214, 172, 85, 0.15);
+  }
+  50% {
+    transform: scale(1.022);
+    box-shadow: 0 7px 26px rgba(214, 172, 85, 0.5), 0 0 18px rgba(247, 216, 139, 0.35);
+  }
+}
+
+/* Motion Sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn-top-cta, .hero-offer-btn, .mid-cta,
+  .btn::after, .btn-top-cta::after, .hero-offer-btn::after, .mid-cta::after,
+  .btn-rot-icon, .btn-arrow, .btn-wa svg {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* ==========================================================================
